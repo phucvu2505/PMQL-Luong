@@ -40,6 +40,10 @@
     <Reference Include="DevExpress.XtraBars.v16.1" />
     <Reference Include="DevExpress.Sparkline.v16.1.Core" />
     <Reference Include="DevExpress.XtraEditors.v16.1" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,16 +57,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDangNhap.Designer.cs">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ICallBack.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FrmDangNhap.resx">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -73,7 +87,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,9 +101,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interface\" />
-    <Folder Include="Resources\" />
-    <Folder Include="User Control\" />
+    <Folder Include="UserControl\" />
+    <Folder Include="UserForm\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_nook.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_ok.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User Group Man Woman_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
