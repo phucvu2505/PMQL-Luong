@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnNguoiDung = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
@@ -62,34 +63,18 @@
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabMain)).BeginInit();
             this.xtraTabMain.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
             // 
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
-            this.btnNguoiDung,
-            this.btnDangXuat,
-            this.ribbonGalleryBarItem1,
-            this.btnNhanVien,
-            this.btnPhongBan,
-            this.btnChucVu,
-            this.btnHeSoLuong,
-            this.btnPhuCap,
-            this.btnTamUng,
-            this.btnTienPhat,
-            this.btnHelp,
-            this.btnTimKiemNS,
-            this.btnTimKiemLuong,
-            this.btnCongVan,
-            this.btnDanhSachNV,
-            this.btnDanhSachLuong,
-            this.txtTenNguoiDung});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 19;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -130,6 +115,7 @@
             // btnNhanVien
             // 
             this.btnNhanVien.Caption = "Nhân viên";
+            this.btnNhanVien.Glyph = global::PMQL_Luong.Properties.Resources.hierarchy;
             this.btnNhanVien.Id = 4;
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -138,6 +124,7 @@
             // btnPhongBan
             // 
             this.btnPhongBan.Caption = "Phòng ban";
+            this.btnPhongBan.Glyph = global::PMQL_Luong.Properties.Resources.department;
             this.btnPhongBan.Id = 5;
             this.btnPhongBan.Name = "btnPhongBan";
             this.btnPhongBan.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -146,6 +133,7 @@
             // btnChucVu
             // 
             this.btnChucVu.Caption = "Chức vụ";
+            this.btnChucVu.Glyph = ((System.Drawing.Image)(resources.GetObject("btnChucVu.Glyph")));
             this.btnChucVu.Id = 6;
             this.btnChucVu.Name = "btnChucVu";
             this.btnChucVu.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -154,6 +142,7 @@
             // btnHeSoLuong
             // 
             this.btnHeSoLuong.Caption = "Hệ số lương";
+            this.btnHeSoLuong.Glyph = global::PMQL_Luong.Properties.Resources.business_coin_money_salary;
             this.btnHeSoLuong.Id = 7;
             this.btnHeSoLuong.Name = "btnHeSoLuong";
             this.btnHeSoLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -162,6 +151,7 @@
             // btnPhuCap
             // 
             this.btnPhuCap.Caption = "Phụ cấp";
+            this.btnPhuCap.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPhuCap.Glyph")));
             this.btnPhuCap.Id = 8;
             this.btnPhuCap.Name = "btnPhuCap";
             this.btnPhuCap.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -170,6 +160,7 @@
             // btnTamUng
             // 
             this.btnTamUng.Caption = "Tiền tạm ứng";
+            this.btnTamUng.Glyph = global::PMQL_Luong.Properties.Resources.dollar_bills;
             this.btnTamUng.Id = 9;
             this.btnTamUng.Name = "btnTamUng";
             this.btnTamUng.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -178,6 +169,7 @@
             // btnTienPhat
             // 
             this.btnTienPhat.Caption = "Tiền phạt";
+            this.btnTienPhat.Glyph = global::PMQL_Luong.Properties.Resources.hand_coins;
             this.btnTienPhat.Id = 10;
             this.btnTienPhat.Name = "btnTienPhat";
             this.btnTienPhat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -195,6 +187,7 @@
             // btnTimKiemNS
             // 
             this.btnTimKiemNS.Caption = "Tìm kiếm theo thông tin nhân sự";
+            this.btnTimKiemNS.Glyph = global::PMQL_Luong.Properties.Resources.find_employee;
             this.btnTimKiemNS.Id = 12;
             this.btnTimKiemNS.Name = "btnTimKiemNS";
             this.btnTimKiemNS.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -203,6 +196,7 @@
             // btnTimKiemLuong
             // 
             this.btnTimKiemLuong.Caption = "Tìm kiếm theo thông tin lương";
+            this.btnTimKiemLuong.Glyph = global::PMQL_Luong.Properties.Resources.find_salary;
             this.btnTimKiemLuong.Id = 13;
             this.btnTimKiemLuong.Name = "btnTimKiemLuong";
             this.btnTimKiemLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -211,6 +205,7 @@
             // btnCongVan
             // 
             this.btnCongVan.Caption = "Công văn ứng lương";
+            this.btnCongVan.Glyph = global::PMQL_Luong.Properties.Resources.clipboard;
             this.btnCongVan.Id = 14;
             this.btnCongVan.Name = "btnCongVan";
             this.btnCongVan.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -219,6 +214,7 @@
             // btnDanhSachNV
             // 
             this.btnDanhSachNV.Caption = "Danh sách nhân viên";
+            this.btnDanhSachNV.Glyph = global::PMQL_Luong.Properties.Resources.list_employee;
             this.btnDanhSachNV.Id = 15;
             this.btnDanhSachNV.Name = "btnDanhSachNV";
             this.btnDanhSachNV.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -227,6 +223,7 @@
             // btnDanhSachLuong
             // 
             this.btnDanhSachLuong.Caption = "Danh sách lương nhân viên";
+            this.btnDanhSachLuong.Glyph = global::PMQL_Luong.Properties.Resources.list;
             this.btnDanhSachLuong.Id = 16;
             this.btnDanhSachLuong.Name = "btnDanhSachLuong";
             this.btnDanhSachLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
@@ -344,10 +341,22 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.pictureEdit1);
             this.xtraTabPage1.Image = global::PMQL_Luong.Properties.Resources.Home_16px;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(912, 381);
             this.xtraTabPage1.Text = "Trang chủ";
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
+            this.pictureEdit1.MenuManager = this.ribbonControl1;
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
+            this.pictureEdit1.Size = new System.Drawing.Size(912, 381);
+            this.pictureEdit1.TabIndex = 0;
             // 
             // timer1
             // 
@@ -369,6 +378,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabMain)).EndInit();
             this.xtraTabMain.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,6 +421,7 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabMain;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private System.Windows.Forms.Timer timer1;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
     }
 }
 
