@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using PMQL_Luong.Entities;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
+using PMQL_Luong.UserControl;
 
 namespace PMQL_Luong
 {
@@ -18,6 +19,11 @@ namespace PMQL_Luong
         private User user;
         private FrmDangNhap frmDangNhap;
         private SqlConnection strConnect;
+
+        private XtraTabPage xtraPhongBan;
+        private XtraTabPage xtraLuongCoBan;
+        private UcPhongBan ucPhongban;
+        private UcLuongCoBan ucLuongcoban;
 
         public FrmHome()
         {
@@ -54,12 +60,17 @@ namespace PMQL_Luong
             xtraTabMain.TabPages.Add(xtraTabPage1);
             switch (user.Permission)
             {
+                case "superadmin":
+                    {
+                        txtTenNguoiDung.Caption = "Giám đốc: ";
+                        break;
+                    }
                 case "admin":
                     {
                         txtTenNguoiDung.Caption = "Quản lý: ";
                         break;
                     }
-                case "user":
+                case "client":
                     {
                         txtTenNguoiDung.Caption = "Nhân viên: ";
                         break;
@@ -81,8 +92,8 @@ namespace PMQL_Luong
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
-            DevExpress.UserSkins.BonusSkins.Register();
-            DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGallery(ribbonGalleryBarItem1, true);
+            //DevExpress.UserSkins.BonusSkins.Register();
+            //DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGallery(ribbonGalleryBarItem1, true);
             timer1.Start();
         }
 
@@ -123,6 +134,36 @@ namespace PMQL_Luong
             frmDangNhap.ICall = this;
             frmDangNhap.Show();
             this.Hide();
+        }
+
+        private void btnPhongBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraPhongBan))
+            {
+                xtraPhongBan = new XtraTabPage();
+                ucPhongban = new UcPhongBan(strConnect, user);
+                xtraPhongBan.Controls.Add(ucPhongban);
+                xtraTabMain.TabPages.Add(xtraPhongBan);
+
+                xtraPhongBan.Text = "Quản lý phòng ban";
+                ucPhongban.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraPhongBan;
+        }
+
+        private void btnLuongCoBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraLuongCoBan))
+            {
+                xtraLuongCoBan = new XtraTabPage();
+                ucLuongcoban = new UcLuongCoBan(strConnect, user);
+                xtraLuongCoBan.Controls.Add(ucLuongcoban);
+                xtraTabMain.TabPages.Add(xtraLuongCoBan);
+
+                xtraLuongCoBan.Text = "Lương cơ bản của nhân viên";
+                ucLuongcoban.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraLuongCoBan;
         }
     }
 }

@@ -83,6 +83,16 @@ namespace PMQL_Luong.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_delete_2 {
+            get {
+                object obj = ResourceManager.GetObject("close_delete_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap department {
             get {
                 object obj = ResourceManager.GetObject("department", resourceCulture);
@@ -216,6 +226,26 @@ namespace PMQL_Luong.Properties {
         internal static System.Drawing.Bitmap Money_Increase {
             get {
                 object obj = ResourceManager.GetObject("Money_Increase", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pencil_edit {
+            get {
+                object obj = ResourceManager.GetObject("pencil_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plus {
+            get {
+                object obj = ResourceManager.GetObject("plus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
