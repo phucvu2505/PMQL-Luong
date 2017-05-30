@@ -21,9 +21,10 @@ namespace PMQL_Luong
         private SqlConnection strConnect;
 
         private XtraTabPage xtraPhongBan;
-        private XtraTabPage xtraLuongCoBan;
+        private XtraTabPage xtraQuanLyTaiKhoan;
         private UcPhongBan ucPhongban;
-        private UcLuongCoBan ucLuongcoban;
+        private UcQuanLyTaiKhoan ucQuanlytaikhoan;
+
 
         public FrmHome()
         {
@@ -84,6 +85,14 @@ namespace PMQL_Luong
             this.Dispose();
         }
 
+        private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmDangNhap = new FrmDangNhap(strConnect);
+            frmDangNhap.ICall = this;
+            frmDangNhap.Show();
+            this.Hide();
+        }
+
         private void xtraTabMain_CloseButtonClick(object sender, EventArgs e)
         {
             ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
@@ -128,14 +137,6 @@ namespace PMQL_Luong
             datetime = datetime + ", " + DateTime.Now.ToString("HH:mm:ss");
         }
 
-        private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            frmDangNhap = new FrmDangNhap(strConnect);
-            frmDangNhap.ICall = this;
-            frmDangNhap.Show();
-            this.Hide();
-        }
-
         private void btnPhongBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!xtraTabMain.TabPages.Contains(xtraPhongBan))
@@ -151,19 +152,19 @@ namespace PMQL_Luong
             xtraTabMain.SelectedTabPage = xtraPhongBan;
         }
 
-        private void btnLuongCoBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnNguoiDung_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!xtraTabMain.TabPages.Contains(xtraLuongCoBan))
+            if (!xtraTabMain.TabPages.Contains(xtraQuanLyTaiKhoan))
             {
-                xtraLuongCoBan = new XtraTabPage();
-                ucLuongcoban = new UcLuongCoBan(strConnect, user);
-                xtraLuongCoBan.Controls.Add(ucLuongcoban);
-                xtraTabMain.TabPages.Add(xtraLuongCoBan);
+                xtraQuanLyTaiKhoan = new XtraTabPage();
+                ucQuanlytaikhoan = new UcQuanLyTaiKhoan(strConnect, user);
+                xtraQuanLyTaiKhoan.Controls.Add(ucQuanlytaikhoan);
+                xtraTabMain.TabPages.Add(xtraQuanLyTaiKhoan);
 
-                xtraLuongCoBan.Text = "Lương cơ bản của nhân viên";
-                ucLuongcoban.Dock = DockStyle.Fill;
+                xtraQuanLyTaiKhoan.Text = "Quản lý tài khoản";
+                ucQuanlytaikhoan.Dock = DockStyle.Fill;
             }
-            xtraTabMain.SelectedTabPage = xtraLuongCoBan;
+            xtraTabMain.SelectedTabPage = xtraQuanLyTaiKhoan;
         }
     }
 }

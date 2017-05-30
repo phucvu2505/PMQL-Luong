@@ -57,13 +57,13 @@
             this.btnDanhSachLuong = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnNguoiDung = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
+            this.btnNguoiDung = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabMain)).BeginInit();
             this.xtraTabMain.SuspendLayout();
@@ -84,9 +84,11 @@
             this.btnHeSoLuong,
             this.btnPhuCap,
             this.btnTamUng,
-            this.btnTienPhat});
+            this.btnTienPhat,
+            this.btnDangXuat,
+            this.btnNguoiDung});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 28;
+            this.ribbonControl1.MaxItemId = 30;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -227,8 +229,6 @@
             this.btnTimKiemNS.Glyph = global::PMQL_Luong.Properties.Resources.find_employee;
             this.btnTimKiemNS.Id = 12;
             this.btnTimKiemNS.Name = "btnTimKiemNS";
-            this.btnTimKiemNS.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // ribbonPageGroup7
             // 
@@ -242,8 +242,6 @@
             this.btnTimKiemLuong.Glyph = global::PMQL_Luong.Properties.Resources.find_salary;
             this.btnTimKiemLuong.Id = 13;
             this.btnTimKiemLuong.Name = "btnTimKiemLuong";
-            this.btnTimKiemLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // ribbonPage4
             // 
@@ -265,8 +263,6 @@
             this.btnDanhSachNV.Glyph = global::PMQL_Luong.Properties.Resources.list_employee;
             this.btnDanhSachNV.Id = 15;
             this.btnDanhSachNV.Name = "btnDanhSachNV";
-            this.btnDanhSachNV.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // ribbonPageGroup9
             // 
@@ -281,8 +277,6 @@
             this.btnCongVan.Glyph = global::PMQL_Luong.Properties.Resources.clipboard;
             this.btnCongVan.Id = 14;
             this.btnCongVan.Name = "btnCongVan";
-            this.btnCongVan.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // btnDanhSachLuong
             // 
@@ -290,8 +284,6 @@
             this.btnDanhSachLuong.Glyph = global::PMQL_Luong.Properties.Resources.list;
             this.btnDanhSachLuong.Id = 16;
             this.btnDanhSachLuong.Name = "btnDanhSachLuong";
-            this.btnDanhSachLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // ribbonPage2
             // 
@@ -307,25 +299,6 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnDangXuat);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Cài đặt hệ thống";
-            // 
-            // btnNguoiDung
-            // 
-            this.btnNguoiDung.Caption = "Quản lý người dùng";
-            this.btnNguoiDung.Glyph = global::PMQL_Luong.Properties.Resources.User_Group_Man_Woman_48px;
-            this.btnNguoiDung.Id = 1;
-            this.btnNguoiDung.Name = "btnNguoiDung";
-            this.btnNguoiDung.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.Caption = "Đăng xuất";
-            this.btnDangXuat.Glyph = global::PMQL_Luong.Properties.Resources.Exit_48px;
-            this.btnDangXuat.Id = 2;
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangXuat_ItemClick);
             // 
             // ribbonPageGroup3
             // 
@@ -367,6 +340,26 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Caption = "Đăng xuất";
+            this.btnDangXuat.Glyph = global::PMQL_Luong.Properties.Resources.Exit_48px;
+            this.btnDangXuat.Id = 28;
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangXuat_ItemClick);
+            // 
+            // btnNguoiDung
+            // 
+            this.btnNguoiDung.Caption = "Quản lý người dùng";
+            this.btnNguoiDung.Glyph = global::PMQL_Luong.Properties.Resources.User_Group_Man_Woman_48px;
+            this.btnNguoiDung.Id = 29;
+            this.btnNguoiDung.Name = "btnNguoiDung";
+            this.btnNguoiDung.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnNguoiDung.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNguoiDung_ItemClick);
+            // 
             // FrmHome
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -395,8 +388,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarButtonItem btnNguoiDung;
-        private DevExpress.XtraBars.BarButtonItem btnDangXuat;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
@@ -426,6 +417,8 @@
         private DevExpress.XtraBars.BarButtonItem btnPhuCap;
         private DevExpress.XtraBars.BarButtonItem btnTamUng;
         private DevExpress.XtraBars.BarButtonItem btnTienPhat;
+        private DevExpress.XtraBars.BarButtonItem btnDangXuat;
+        private DevExpress.XtraBars.BarButtonItem btnNguoiDung;
     }
 }
 

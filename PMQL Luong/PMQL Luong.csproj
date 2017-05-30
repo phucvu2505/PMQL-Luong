@@ -81,6 +81,12 @@
     <Compile Include="UserControl\UcPhongBan.Designer.cs">
       <DependentUpon>UcPhongBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UcQuanLyTaiKhoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcQuanLyTaiKhoan.Designer.cs">
+      <DependentUpon>UcQuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmDangNhap.resx">
       <DependentUpon>FrmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="UserControl\UcPhongBan.resx">
       <DependentUpon>UcPhongBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcQuanLyTaiKhoan.resx">
+      <DependentUpon>UcQuanLyTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

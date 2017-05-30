@@ -163,7 +163,7 @@ namespace PMQL_Luong
             List<User> list = new List<User>();
             User user = new User();
             SqlCommand sqlCommand = new SqlCommand(@"select tk.mataikhoan, tk.matkhau, nv.tennhanvien, tk.quyentruycap from taikhoan tk, nhanvien nv
-                                                        where tk.mataikhoan = nv.mataikhoan", strConnect);
+                                                        where tk.mataikhoan = nv.manhanvien", strConnect);
             SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
             DataTable table = new DataTable();
 
