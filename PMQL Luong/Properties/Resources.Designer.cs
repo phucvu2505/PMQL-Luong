@@ -63,6 +63,16 @@ namespace PMQL_Luong.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_User_Group_Woman_Man_48px {
+            get {
+                object obj = ResourceManager.GetObject("Add_User_Group_Woman_Man_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap business_coin_money_salary {
             get {
                 object obj = ResourceManager.GetObject("business_coin_money_salary", resourceCulture);
@@ -106,6 +116,16 @@ namespace PMQL_Luong.Properties {
         internal static System.Drawing.Bitmap dollar_bills {
             get {
                 object obj = ResourceManager.GetObject("dollar_bills", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Edit_User_Male_48px {
+            get {
+                object obj = ResourceManager.GetObject("Edit_User_Male_48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +266,16 @@ namespace PMQL_Luong.Properties {
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Remove_User_Male_48px {
+            get {
+                object obj = ResourceManager.GetObject("Remove_User_Male_48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
