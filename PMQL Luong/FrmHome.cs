@@ -301,5 +301,10 @@ namespace PMQL_Luong
             }
             xtraTabMain.SelectedTabPage = xtraNhanVien;
         }
+
+        private void btnTimKiemLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

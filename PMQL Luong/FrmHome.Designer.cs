@@ -224,6 +224,7 @@
             this.btnTimKiemLuong.Name = "btnTimKiemLuong";
             this.btnTimKiemLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnTimKiemLuong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiemLuong_ItemClick);
             // 
             // btnDanhSachNV
             // 

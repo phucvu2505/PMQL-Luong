@@ -233,6 +233,7 @@ namespace PMQL_Luong.UserControl
         private void btn_them_Click(object sender, EventArgs e)
         {
             txt_mahs.Text = TaoHeSoLuong();
+            txt_mahs.Enabled = false;
             txt_giatri.Text = "";
             txt_mota.Text = "";
             txt_nhanvien.Text = user.Name;
@@ -248,27 +249,46 @@ namespace PMQL_Luong.UserControl
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thay đổi hệ số lương không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
-                SqlCommand command = new SqlCommand("SP_SuaHeso", strConnect);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@maheso", txt_mahs.Text)).ToString();
-                command.Parameters.Add(new SqlParameter("@giatri", txt_giatri.Text)).ToString();
-                command.Parameters.Add(new SqlParameter("@mota", txt_mota.Text)).ToString();
+                try
+                {
+                    SqlCommand command = new SqlCommand("SP_SuaHeso", strConnect);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@maheso", txt_mahs.Text));
+                    command.Parameters.Add(new SqlParameter("@giatri", txt_giatri.Text));
+                    command.Parameters.Add(new SqlParameter("@mota", txt_mota.Text));
 
-                command.ExecuteNonQuery();
-                XtraMessageBox.Show("Thay đổi thông tin hệ số lương thành công", "Thông báo", MessageBoxButtons.OK);
-                loadDataHesoluong();
+                    command.ExecuteNonQuery();
+                    XtraMessageBox.Show("Thay đổi thông tin hệ số lương thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadDataHesoluong();
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("SP_XoaHeso", strConnect);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add(new SqlParameter("@maheso", txt_mahs.Text)).ToString();
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa hệ số lương " + txt_mahs.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("SP_XoaHeso", strConnect);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@maheso", txt_mahs.Text));
 
-            command.ExecuteNonQuery();
-            XtraMessageBox.Show("Xóa hệ số thành công", "Thông báo", MessageBoxButtons.OK);
-            loadDataHesoluong();
+                    command.ExecuteNonQuery();
+                    XtraMessageBox.Show("Xóa hệ số thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadDataHesoluong();
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
@@ -282,15 +302,22 @@ namespace PMQL_Luong.UserControl
                 DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm hệ số lương không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialog == DialogResult.Yes)
                 {
-                    SqlCommand command = new SqlCommand("SP_ThemHeso", strConnect);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add(new SqlParameter("@maheso", txt_mahs.Text)).ToString();
-                    command.Parameters.Add(new SqlParameter("@giatri", txt_giatri.Text)).ToString();
-                    command.Parameters.Add(new SqlParameter("@mota", txt_mota.Text)).ToString();
+                    try
+                    {
+                        SqlCommand command = new SqlCommand("SP_ThemHeso", strConnect);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add(new SqlParameter("@maheso", txt_mahs.Text));
+                        command.Parameters.Add(new SqlParameter("@giatri", txt_giatri.Text));
+                        command.Parameters.Add(new SqlParameter("@mota", txt_mota.Text));
 
-                    command.ExecuteNonQuery();
-                    XtraMessageBox.Show("Thêm hệ số thành công", "Thông báo", MessageBoxButtons.OK);
-                    loadDataHesoluong();
+                        command.ExecuteNonQuery();
+                        XtraMessageBox.Show("Thêm hệ số thành công", "Thông báo", MessageBoxButtons.OK);
+                        loadDataHesoluong();
+                    }
+                    catch
+                    {
+                        XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -316,7 +343,7 @@ namespace PMQL_Luong.UserControl
             {
                 SqlCommand command = new SqlCommand("SP_SuaLuongCoban", strConnect);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@luongcoban", txt_luong.Text)).ToString();
+                command.Parameters.Add(new SqlParameter("@luongcoban", txt_luong.Text));
 
                 command.ExecuteNonQuery();
                 XtraMessageBox.Show("Thay đổi thông tin lương cơ bản thành công", "Thông báo", MessageBoxButtons.OK);

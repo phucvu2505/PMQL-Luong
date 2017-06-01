@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcTienThuong));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl2 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.dtp_ngaythuong = new System.Windows.Forms.DateTimePicker();
+            this.cmp_tennv = new System.Windows.Forms.ComboBox();
             this.cmp_mucthuong = new System.Windows.Forms.ComboBox();
-            this.dtp_ngaythuong = new DevExpress.XtraEditors.DateEdit();
             this.txt_nvghinhan = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_nvthuong = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -46,6 +47,8 @@
             this.btn_themnv = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.btn_huy = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_luu = new DevExpress.XtraEditors.SimpleButton();
             this.txt_giatri = new DevExpress.XtraEditors.TextEdit();
             this.txt_mota = new DevExpress.XtraEditors.TextEdit();
             this.txt_matienthuong = new DevExpress.XtraEditors.TextEdit();
@@ -69,10 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             this.xtraScrollableControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtp_ngaythuong.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtp_ngaythuong.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_nvghinhan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_nvthuong.Properties)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -109,27 +109,42 @@
             this.groupControl4.Controls.Add(this.xtraScrollableControl2);
             this.groupControl4.Controls.Add(this.panel2);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(2, 251);
+            this.groupControl4.Location = new System.Drawing.Point(2, 296);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(317, 128);
+            this.groupControl4.Size = new System.Drawing.Size(317, 83);
             this.groupControl4.TabIndex = 1;
             this.groupControl4.Text = "Thông tin nhân viên được thưởng";
             // 
             // xtraScrollableControl2
             // 
-            this.xtraScrollableControl2.Controls.Add(this.cmp_mucthuong);
             this.xtraScrollableControl2.Controls.Add(this.dtp_ngaythuong);
+            this.xtraScrollableControl2.Controls.Add(this.cmp_tennv);
+            this.xtraScrollableControl2.Controls.Add(this.cmp_mucthuong);
             this.xtraScrollableControl2.Controls.Add(this.txt_nvghinhan);
             this.xtraScrollableControl2.Controls.Add(this.labelControl7);
             this.xtraScrollableControl2.Controls.Add(this.labelControl6);
-            this.xtraScrollableControl2.Controls.Add(this.txt_nvthuong);
             this.xtraScrollableControl2.Controls.Add(this.labelControl5);
             this.xtraScrollableControl2.Controls.Add(this.labelControl4);
             this.xtraScrollableControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl2.Location = new System.Drawing.Point(2, 84);
             this.xtraScrollableControl2.Name = "xtraScrollableControl2";
-            this.xtraScrollableControl2.Size = new System.Drawing.Size(313, 42);
+            this.xtraScrollableControl2.Size = new System.Drawing.Size(313, 0);
             this.xtraScrollableControl2.TabIndex = 2;
+            // 
+            // dtp_ngaythuong
+            // 
+            this.dtp_ngaythuong.Location = new System.Drawing.Point(71, 15);
+            this.dtp_ngaythuong.Name = "dtp_ngaythuong";
+            this.dtp_ngaythuong.Size = new System.Drawing.Size(198, 21);
+            this.dtp_ngaythuong.TabIndex = 13;
+            // 
+            // cmp_tennv
+            // 
+            this.cmp_tennv.FormattingEnabled = true;
+            this.cmp_tennv.Location = new System.Drawing.Point(71, 54);
+            this.cmp_tennv.Name = "cmp_tennv";
+            this.cmp_tennv.Size = new System.Drawing.Size(198, 21);
+            this.cmp_tennv.TabIndex = 12;
             // 
             // cmp_mucthuong
             // 
@@ -139,20 +154,9 @@
             this.cmp_mucthuong.Size = new System.Drawing.Size(198, 21);
             this.cmp_mucthuong.TabIndex = 6;
             // 
-            // dtp_ngaythuong
-            // 
-            this.dtp_ngaythuong.EditValue = null;
-            this.dtp_ngaythuong.Location = new System.Drawing.Point(71, 16);
-            this.dtp_ngaythuong.Name = "dtp_ngaythuong";
-            this.dtp_ngaythuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtp_ngaythuong.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtp_ngaythuong.Size = new System.Drawing.Size(198, 20);
-            this.dtp_ngaythuong.TabIndex = 4;
-            // 
             // txt_nvghinhan
             // 
+            this.txt_nvghinhan.Enabled = false;
             this.txt_nvghinhan.Location = new System.Drawing.Point(71, 129);
             this.txt_nvghinhan.Name = "txt_nvghinhan";
             this.txt_nvghinhan.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
@@ -175,13 +179,6 @@
             this.labelControl6.Size = new System.Drawing.Size(35, 26);
             this.labelControl6.TabIndex = 9;
             this.labelControl6.Text = "Mức \r\nthưởng";
-            // 
-            // txt_nvthuong
-            // 
-            this.txt_nvthuong.Location = new System.Drawing.Point(71, 52);
-            this.txt_nvthuong.Name = "txt_nvthuong";
-            this.txt_nvthuong.Size = new System.Drawing.Size(198, 20);
-            this.txt_nvthuong.TabIndex = 5;
             // 
             // labelControl5
             // 
@@ -250,12 +247,14 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(2, 20);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(317, 231);
+            this.groupControl3.Size = new System.Drawing.Size(317, 276);
             this.groupControl3.TabIndex = 0;
             this.groupControl3.Text = "Thông tin mức thưởng";
             // 
             // xtraScrollableControl1
             // 
+            this.xtraScrollableControl1.Controls.Add(this.btn_huy);
+            this.xtraScrollableControl1.Controls.Add(this.btn_luu);
             this.xtraScrollableControl1.Controls.Add(this.txt_giatri);
             this.xtraScrollableControl1.Controls.Add(this.txt_mota);
             this.xtraScrollableControl1.Controls.Add(this.txt_matienthuong);
@@ -265,8 +264,28 @@
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(2, 84);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(313, 145);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(313, 190);
             this.xtraScrollableControl1.TabIndex = 1;
+            // 
+            // btn_huy
+            // 
+            this.btn_huy.Image = ((System.Drawing.Image)(resources.GetObject("btn_huy.Image")));
+            this.btn_huy.Location = new System.Drawing.Point(183, 137);
+            this.btn_huy.Name = "btn_huy";
+            this.btn_huy.Size = new System.Drawing.Size(86, 46);
+            this.btn_huy.TabIndex = 5;
+            this.btn_huy.Text = "Hủy bỏ";
+            this.btn_huy.Click += new System.EventHandler(this.btn_huy_Click);
+            // 
+            // btn_luu
+            // 
+            this.btn_luu.Image = ((System.Drawing.Image)(resources.GetObject("btn_luu.Image")));
+            this.btn_luu.Location = new System.Drawing.Point(71, 137);
+            this.btn_luu.Name = "btn_luu";
+            this.btn_luu.Size = new System.Drawing.Size(90, 46);
+            this.btn_luu.TabIndex = 4;
+            this.btn_luu.Text = "Lưu lại";
+            this.btn_luu.Click += new System.EventHandler(this.btn_luu_Click);
             // 
             // txt_giatri
             // 
@@ -274,6 +293,7 @@
             this.txt_giatri.Name = "txt_giatri";
             this.txt_giatri.Size = new System.Drawing.Size(198, 20);
             this.txt_giatri.TabIndex = 3;
+            this.txt_giatri.EditValueChanged += new System.EventHandler(this.txt_giatri_EditValueChanged);
             // 
             // txt_mota
             // 
@@ -284,8 +304,11 @@
             // 
             // txt_matienthuong
             // 
+            this.txt_matienthuong.Enabled = false;
             this.txt_matienthuong.Location = new System.Drawing.Point(71, 18);
             this.txt_matienthuong.Name = "txt_matienthuong";
+            this.txt_matienthuong.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.txt_matienthuong.Properties.Appearance.Options.UseForeColor = true;
             this.txt_matienthuong.Size = new System.Drawing.Size(198, 20);
             this.txt_matienthuong.TabIndex = 1;
             // 
@@ -393,6 +416,8 @@
             this.grv_nhanvien.GridControl = this.grid_nhanvien;
             this.grv_nhanvien.Name = "grv_nhanvien";
             this.grv_nhanvien.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            this.grv_nhanvien.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.grv_nhanvien_CustomDrawRowIndicator);
+            this.grv_nhanvien.Click += new System.EventHandler(this.grv_nhanvien_Click);
             // 
             // groupControl5
             // 
@@ -420,6 +445,8 @@
             this.grv_thuong.GridControl = this.grid_thuong;
             this.grv_thuong.Name = "grv_thuong";
             this.grv_thuong.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            this.grv_thuong.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.grv_thuong_CustomDrawRowIndicator);
+            this.grv_thuong.Click += new System.EventHandler(this.grv_thuong_Click);
             // 
             // errGiatri
             // 
@@ -440,10 +467,7 @@
             this.groupControl4.ResumeLayout(false);
             this.xtraScrollableControl2.ResumeLayout(false);
             this.xtraScrollableControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtp_ngaythuong.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtp_ngaythuong.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_nvghinhan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_nvthuong.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -490,14 +514,11 @@
         private DevExpress.XtraEditors.TextEdit txt_giatri;
         private DevExpress.XtraEditors.TextEdit txt_mota;
         private DevExpress.XtraEditors.TextEdit txt_matienthuong;
-        private System.Windows.Forms.ErrorProvider errGiatri;
         private DevExpress.XtraEditors.TextEdit txt_nvghinhan;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit txt_nvthuong;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.DateEdit dtp_ngaythuong;
         private System.Windows.Forms.ComboBox cmp_mucthuong;
         private DevExpress.XtraEditors.GroupControl groupControl6;
         private DevExpress.XtraGrid.GridControl grid_nhanvien;
@@ -505,5 +526,10 @@
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraGrid.GridControl grid_thuong;
         private DevExpress.XtraGrid.Views.Grid.GridView grv_thuong;
+        private DevExpress.XtraEditors.SimpleButton btn_huy;
+        private DevExpress.XtraEditors.SimpleButton btn_luu;
+        private System.Windows.Forms.ComboBox cmp_tennv;
+        private System.Windows.Forms.DateTimePicker dtp_ngaythuong;
+        private System.Windows.Forms.ErrorProvider errGiatri;
     }
 }
