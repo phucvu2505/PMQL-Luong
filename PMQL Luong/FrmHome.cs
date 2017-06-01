@@ -22,9 +22,24 @@ namespace PMQL_Luong
 
         private XtraTabPage xtraPhongBan;
         private XtraTabPage xtraQuanLyTaiKhoan;
+        private XtraTabPage xtraHeSoLuong;
+        private XtraTabPage xtraTienPhat;
+        private XtraTabPage xtraTienThuong;
+        private XtraTabPage xtraChucVu;
+        private XtraTabPage xtraTimKiemNhanVien;
+        private XtraTabPage xtraTienTamUng;
+        private XtraTabPage xtraThongKeNhanVien;
+        private XtraTabPage xtraNhanVien;
         private UcPhongBan ucPhongban;
         private UcQuanLyTaiKhoan ucQuanlytaikhoan;
-
+        private UcHeSoLuong ucHesoluong;
+        private UcTienphat ucTienphat;
+        private UcTienThuong ucTienthuong;
+        private UcChucVu ucChucvu;
+        private UcTimkiem ucTimkiemNhanvien;
+        private UcUngtien ucTientamung;
+        private UcThongkeNhanvien ucThongkenhanvien;
+        private UcNhanVien ucNhanvien;
 
         public FrmHome()
         {
@@ -71,7 +86,7 @@ namespace PMQL_Luong
                         txtTenNguoiDung.Caption = "Quản lý: ";
                         break;
                     }
-                case "client":
+                case "user":
                     {
                         txtTenNguoiDung.Caption = "Nhân viên: ";
                         break;
@@ -165,6 +180,126 @@ namespace PMQL_Luong
                 ucQuanlytaikhoan.Dock = DockStyle.Fill;
             }
             xtraTabMain.SelectedTabPage = xtraQuanLyTaiKhoan;
+        }
+
+        private void btnHeSoLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraHeSoLuong))
+            {
+                xtraHeSoLuong = new XtraTabPage();
+                ucHesoluong = new UcHeSoLuong(strConnect, user);
+                xtraHeSoLuong.Controls.Add(ucHesoluong);
+                xtraTabMain.TabPages.Add(xtraHeSoLuong);
+
+                xtraHeSoLuong.Text = "Quản lý hệ số lương";
+                ucHesoluong.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraHeSoLuong;
+        }
+
+        private void btnTienPhat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraTienPhat))
+            {
+                xtraTienPhat = new XtraTabPage();
+                ucTienphat = new UcTienphat(strConnect, user);
+                xtraTienPhat.Controls.Add(ucTienphat);
+                xtraTabMain.TabPages.Add(xtraTienPhat);
+
+                xtraTienPhat.Text = "Tiền phạt nhân viên";
+                ucTienphat.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraTienPhat;
+        }
+
+        private void btnTienThuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraTienThuong))
+            {
+                xtraTienThuong = new XtraTabPage();
+                ucTienthuong = new UcTienThuong(strConnect, user);
+                xtraTienThuong.Controls.Add(ucTienthuong);
+                xtraTabMain.TabPages.Add(xtraTienThuong);
+
+                xtraTienThuong.Text = "Tiền thưởng nhân viên";
+                ucTienthuong.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraTienThuong;
+        }
+
+        private void btnChucVu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraChucVu))
+            {
+                xtraChucVu = new XtraTabPage();
+                ucChucvu = new UcChucVu(strConnect, user);
+                xtraChucVu.Controls.Add(ucChucvu);
+                xtraTabMain.TabPages.Add(xtraChucVu);
+
+                xtraChucVu.Text = "Quản lý chức vụ";
+                ucChucvu.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraChucVu;
+        }
+
+        private void btnTimKiemNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraTimKiemNhanVien))
+            {
+                xtraTimKiemNhanVien = new XtraTabPage();
+                ucTimkiemNhanvien = new UcTimkiem(strConnect);
+                xtraTimKiemNhanVien.Controls.Add(ucTimkiemNhanvien);
+                xtraTabMain.TabPages.Add(xtraTimKiemNhanVien);
+
+                xtraTimKiemNhanVien.Text = "Tìm kiếm thông tin nhân viên";
+                ucTimkiemNhanvien.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraTimKiemNhanVien;
+        }
+
+        private void btnTamUng_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraTienTamUng))
+            {
+                xtraTienTamUng = new XtraTabPage();
+                ucTientamung = new UcUngtien(strConnect, user);
+                xtraTienTamUng.Controls.Add(ucTientamung);
+                xtraTabMain.TabPages.Add(xtraTienTamUng);
+
+                xtraTienTamUng.Text = "Tiền nhân viên tạm ứng";
+                ucTientamung.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraTienTamUng;
+        }
+
+        private void btnDanhSachNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraThongKeNhanVien))
+            {
+                xtraThongKeNhanVien = new XtraTabPage();
+                ucThongkenhanvien = new UcThongkeNhanvien(strConnect);
+                xtraThongKeNhanVien.Controls.Add(ucThongkenhanvien);
+                xtraTabMain.TabPages.Add(xtraThongKeNhanVien);
+
+                xtraThongKeNhanVien.Text = "Thống kê nhân viên";
+                ucThongkenhanvien.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraThongKeNhanVien;
+        }
+
+        private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraNhanVien))
+            {
+                xtraNhanVien = new XtraTabPage();
+                ucNhanvien = new UcNhanVien(strConnect, user);
+                xtraNhanVien.Controls.Add(ucNhanvien);
+                xtraTabMain.TabPages.Add(xtraNhanVien);
+
+                xtraNhanVien.Text = "Quản lý nhân viên";
+                ucNhanvien.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraNhanVien;
         }
     }
 }

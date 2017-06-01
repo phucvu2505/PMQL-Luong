@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcPhongBan));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btn_them = new DevExpress.XtraBars.BarButtonItem();
@@ -182,18 +183,20 @@
             // 
             // btn_huy
             // 
-            this.btn_huy.Location = new System.Drawing.Point(143, 290);
+            this.btn_huy.Image = ((System.Drawing.Image)(resources.GetObject("btn_huy.Image")));
+            this.btn_huy.Location = new System.Drawing.Point(119, 281);
             this.btn_huy.Name = "btn_huy";
-            this.btn_huy.Size = new System.Drawing.Size(75, 23);
+            this.btn_huy.Size = new System.Drawing.Size(99, 48);
             this.btn_huy.TabIndex = 7;
             this.btn_huy.Text = "Hủy bỏ";
             this.btn_huy.Click += new System.EventHandler(this.btn_huy_Click);
             // 
             // btn_luu
             // 
-            this.btn_luu.Location = new System.Drawing.Point(47, 290);
+            this.btn_luu.Image = ((System.Drawing.Image)(resources.GetObject("btn_luu.Image")));
+            this.btn_luu.Location = new System.Drawing.Point(18, 281);
             this.btn_luu.Name = "btn_luu";
-            this.btn_luu.Size = new System.Drawing.Size(75, 23);
+            this.btn_luu.Size = new System.Drawing.Size(95, 48);
             this.btn_luu.TabIndex = 6;
             this.btn_luu.Text = "Lưu lại";
             this.btn_luu.Click += new System.EventHandler(this.btn_luu_Click);

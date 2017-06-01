@@ -19,6 +19,7 @@ namespace PMQL_Luong.UserControl
     {
         private SqlConnection strConnect;
         private User user;
+        private string ma = "";
 
         public UcQuanLyTaiKhoan(SqlConnection strConnect, User user)
         {
@@ -32,6 +33,8 @@ namespace PMQL_Luong.UserControl
 
         private void UcQuanLyTaiKhoan_Load(object sender, EventArgs e)
         {
+            if (user.Permission == "user")
+                ma = user.Id;
             loadDataNhanvien();
             loadDataTaikhoan();
         }
@@ -192,7 +195,9 @@ namespace PMQL_Luong.UserControl
         {
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select tk.mataikhoan, nv.tennhanvien,case tk.matkhau when '' then null else '********' end as matkhau, tk.SDT, tk.quyentruycap from taikhoan tk inner join nhanvien nv on nv.manhanvien = tk.mataikhoan", strConnect);
+                SqlCommand command = new SqlCommand("select tk.mataikhoan, nv.tennhanvien,case tk.matkhau when '' then null else '********' end as matkhau, tk.SDT, tk.quyentruycap from taikhoan tk inner join nhanvien nv on tk.mataikhoan = nv.manhanvien where tk.mataikhoan like N'%'+@ma+'%'", strConnect);
+                command.Parameters.Add(new SqlParameter("@ma", ma)).ToString();
+                SqlDataAdapter da = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 grid_taikhoan.DataSource = dt;
@@ -300,6 +305,11 @@ namespace PMQL_Luong.UserControl
                     btnThemTK.Enabled = false;
                     btnSuaTK.Enabled = true;
                     btnXoaTK.Enabled = true;
+                    cmp_quyentruycap.Enabled = true;
+                }else if(user.Permission == "user")
+                {
+                    btnSuaTK.Enabled = true;
+                    cmp_quyentruycap.Enabled = false;
                 }
             }
             catch { }

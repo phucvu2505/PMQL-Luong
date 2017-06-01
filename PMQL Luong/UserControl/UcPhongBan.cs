@@ -25,13 +25,9 @@ namespace PMQL_Luong.UserControl
             this.strConnect = strConnect;
             this.user = user;
             if (!KiemTraQuyenTruyCap())
-            {
                 btn_them.Enabled = false;
-            }
             else
-            {
                 btn_them.Enabled = true;
-            }
             btn_xoa.Enabled = false;
             btn_sua.Enabled = false;
             btn_luu.Visible = false;
@@ -108,24 +104,30 @@ namespace PMQL_Luong.UserControl
 
         private void grv_phongban_Click(object sender, EventArgs e)
         {
-            txt_mapb.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "maphongban").ToString();
-            txt_tenpb.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "tenphongban").ToString();
-            cmp_diadiem.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "diadiem").ToString();
-            txt_tennv.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "tennhanvien").ToString();
-
-            txt_mapb.Enabled = false;
-            txt_tennv.Enabled = false;
-
-            if (!KiemTraQuyenTruyCap())
+            try
             {
-                btn_sua.Enabled = false;
-                btn_xoa.Enabled = false;
+                txt_mapb.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "maphongban").ToString();
+                txt_tenpb.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "tenphongban").ToString();
+                cmp_diadiem.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "diadiem").ToString();
+                txt_tennv.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "tennhanvien").ToString();
+
+                txt_mapb.Enabled = false;
+                txt_tennv.Enabled = false;
+
+                if (!KiemTraQuyenTruyCap())
+                {
+                    btn_sua.Enabled = false;
+                    btn_xoa.Enabled = false;
+                }
+                else
+                {
+                    btn_sua.Enabled = true;
+                    btn_xoa.Enabled = true;
+                }
+                btn_luu.Visible = false;
+                btn_huy.Visible = false;
             }
-            else
-            {
-                btn_sua.Enabled = true;
-                btn_xoa.Enabled = true;
-            }
+            catch { }
         }
 
         private void TaoSTT_GridView(GridView grv, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -217,13 +219,15 @@ namespace PMQL_Luong.UserControl
             txt_tennv.Enabled = false;
 
             btn_luu.Visible = true;
-            btn_huy.Visible = true;             
+            btn_huy.Visible = true;
+            btn_sua.Enabled = false;
+            btn_xoa.Enabled = false;
         }
 
         private void btn_sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thay đổi thông tin phòng ban không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dialog == DialogResult.Yes)
+            if (dialog == DialogResult.Yes)
             {
                 try
                 {
@@ -247,7 +251,7 @@ namespace PMQL_Luong.UserControl
         private void btn_xoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa phòng ban", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dialog == DialogResult.Yes)
+            if (dialog == DialogResult.Yes)
             {
                 try
                 {
@@ -268,14 +272,14 @@ namespace PMQL_Luong.UserControl
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if(txt_tenpb.Text.Equals(""))
+            if (txt_tenpb.Text.Equals(""))
                 XtraMessageBox.Show("Bạn chưa nhập tên phòng ban", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            else if(cmp_diadiem.Text.Equals(""))
+            else if (cmp_diadiem.Text.Equals(""))
                 XtraMessageBox.Show("Bạn chưa chọn địa điểm của phòng ban", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             else
             {
                 DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm phòng ban mới không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(dialog == DialogResult.Yes)
+                if (dialog == DialogResult.Yes)
                 {
                     try
                     {
@@ -300,7 +304,7 @@ namespace PMQL_Luong.UserControl
         private void btn_huy_Click(object sender, EventArgs e)
         {
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn hủy thao tác này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dialog == DialogResult.Yes)
+            if (dialog == DialogResult.Yes)
             {
                 txt_mapb.Text = "";
                 txt_tennv.Text = "";
