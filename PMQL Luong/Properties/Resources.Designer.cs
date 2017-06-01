@@ -63,6 +63,16 @@ namespace PMQL_Luong.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _081___jqo724X {
+            get {
+                object obj = ResourceManager.GetObject("_081___jqo724X", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Add_User_Group_Woman_Man_48px {
             get {
                 object obj = ResourceManager.GetObject("Add_User_Group_Woman_Man_48px", resourceCulture);

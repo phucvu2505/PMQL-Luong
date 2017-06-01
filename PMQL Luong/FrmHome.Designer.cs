@@ -359,6 +359,7 @@
             // pictureEdit1
             // 
             this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureEdit1.EditValue = global::PMQL_Luong.Properties.Resources._081___jqo724X;
             this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit1.MenuManager = this.ribbonControl1;
             this.pictureEdit1.Name = "pictureEdit1";
