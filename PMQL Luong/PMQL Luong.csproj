@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\HeSoLuong.cs" />
+    <Compile Include="Entities\NhanVien.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
@@ -130,6 +131,12 @@
     <Compile Include="UserControl\UcQuanLyTaiKhoan.Designer.cs">
       <DependentUpon>UcQuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UcThongKeLuong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcThongKeLuong.designer.cs">
+      <DependentUpon>UcThongKeLuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UcThongkeNhanvien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -153,6 +160,12 @@
     </Compile>
     <Compile Include="UserControl\UcTimkiem.designer.cs">
       <DependentUpon>UcTimkiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UcTimKiemLuong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcTimKiemLuong.Designer.cs">
+      <DependentUpon>UcTimKiemLuong.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UcUngtien.cs">
       <SubType>UserControl</SubType>
@@ -211,6 +224,9 @@
     <EmbeddedResource Include="UserControl\UcQuanLyTaiKhoan.resx">
       <DependentUpon>UcQuanLyTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcThongKeLuong.resx">
+      <DependentUpon>UcThongKeLuong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcThongkeNhanvien.resx">
       <DependentUpon>UcThongkeNhanvien.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcTimkiem.resx">
       <DependentUpon>UcTimkiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcTimKiemLuong.resx">
+      <DependentUpon>UcTimKiemLuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcUngtien.resx">
       <DependentUpon>UcUngtien.cs</DependentUpon>
@@ -284,6 +303,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\081 - jqo724X.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

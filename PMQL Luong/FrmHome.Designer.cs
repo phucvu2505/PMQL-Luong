@@ -63,6 +63,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ribbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabMain)).BeginInit();
             this.xtraTabMain.SuspendLayout();
@@ -89,9 +90,10 @@
             this.btnTimKiemNhanVien,
             this.btnTimKiemLuong,
             this.btnDanhSachNV,
-            this.btnDanhSachLuong});
+            this.btnDanhSachLuong,
+            this.ribbonGalleryBarItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 34;
+            this.ribbonControl1.MaxItemId = 35;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -244,6 +246,7 @@
             this.btnDanhSachLuong.Name = "btnDanhSachLuong";
             this.btnDanhSachLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnDanhSachLuong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDanhSachLuong_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -334,6 +337,7 @@
             // 
             // ribbonPageGroup3
             // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.ribbonGalleryBarItem1);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // xtraTabMain
@@ -372,6 +376,12 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // ribbonGalleryBarItem1
+            // 
+            this.ribbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            this.ribbonGalleryBarItem1.Id = 34;
+            this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
             // 
             // FrmHome
             // 
@@ -431,6 +441,7 @@
         private DevExpress.XtraBars.BarButtonItem btnTimKiemLuong;
         private DevExpress.XtraBars.BarButtonItem btnDanhSachNV;
         private DevExpress.XtraBars.BarButtonItem btnDanhSachLuong;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem ribbonGalleryBarItem1;
     }
 }
 
