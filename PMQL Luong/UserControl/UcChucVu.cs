@@ -123,65 +123,6 @@ namespace PMQL_Luong.UserControl
 
         }
 
-        private void btn_Them_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            txtChucvu.Text = TaoMaChucvu();
-            txtTenChucVu.Text = "";
-            txtMota.Text = "";
-            txtTenChucVu.Enabled = true;
-            txtMota.Enabled = true;
-            button1.Visible = true;
-
-        }
-
-        private void btn_Sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thay đổi thông tin chức vụ không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialog == DialogResult.Yes)
-            {
-                try
-                {
-                    string ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "machucvu").ToString();
-                    SqlCommand command = new SqlCommand("SP_Capnhatchucvu", StrConn);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add(new SqlParameter("@machucvu", ma));
-                    command.Parameters.Add(new SqlParameter("@tenchucvu", txtTenChucVu.Text));
-                    command.Parameters.Add(new SqlParameter("@mota", txtMota.Text));
-
-                    command.ExecuteNonQuery();
-                    XtraMessageBox.Show("Sửa phòng ban thành công", "Thông báo", MessageBoxButtons.OK);
-                    loadchucvu();
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void btn_Xoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa chức vụ", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialog == DialogResult.Yes)
-            {
-                try
-                {
-                    string ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "machucvu").ToString();
-                    SqlCommand command = new SqlCommand("SP_Xoachucvu", StrConn);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add(new SqlParameter("@machucvu", ma));
-
-                    command.ExecuteNonQuery();
-                    XtraMessageBox.Show("Đã xóa phòng ban", "Thông báo", MessageBoxButtons.OK);
-                    loadchucvu();
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void gridControl1_Click(object sender, EventArgs e)
         {
             txtChucvu.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "machucvu").ToString();
@@ -228,6 +169,64 @@ namespace PMQL_Luong.UserControl
                     {
                         XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            txtChucvu.Text = TaoMaChucvu();
+            txtTenChucVu.Text = "";
+            txtMota.Text = "";
+            txtTenChucVu.Enabled = true;
+            txtMota.Enabled = true;
+            button1.Visible = true;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thay đổi thông tin chức vụ không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                try
+                {
+                    string ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "machucvu").ToString();
+                    SqlCommand command = new SqlCommand("SP_Capnhatchucvu", StrConn);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@machucvu", ma));
+                    command.Parameters.Add(new SqlParameter("@tenchucvu", txtTenChucVu.Text));
+                    command.Parameters.Add(new SqlParameter("@mota", txtMota.Text));
+
+                    command.ExecuteNonQuery();
+                    XtraMessageBox.Show("Sửa phòng ban thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadchucvu();
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa chức vụ", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                try
+                {
+                    string ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "machucvu").ToString();
+                    SqlCommand command = new SqlCommand("SP_Xoachucvu", StrConn);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@machucvu", ma));
+
+                    command.ExecuteNonQuery();
+                    XtraMessageBox.Show("Đã xóa phòng ban", "Thông báo", MessageBoxButtons.OK);
+                    loadchucvu();
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

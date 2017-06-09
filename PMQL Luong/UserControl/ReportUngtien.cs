@@ -15,10 +15,11 @@ namespace PMQL_Luong.UserControl
 
         public void BindData()
         {
-            lbnhanvien.DataBindings.Add("Text", DataSource, "tennhanvien");
-            lbngayung.DataBindings.Add("Text", DataSource, "ngayung");
-            lbngaynhan.DataBindings.Add("Text", DataSource, "ngaynhantien");
-            lbGiatri.DataBindings.Add("Text", DataSource, "giatri");
+            xrlbnhanvien.DataBindings.Add("Text", DataSource, "tennhanvien");
+            xrlbBophan.DataBindings.Add("Text", DataSource, "tenphongban");
+            xrlbNgayung.DataBindings.Add("Text", DataSource, "ngayung");
+            xrlbNgaynhan.DataBindings.Add("Text", DataSource, "ngaynhantien");
+            xrlbgiatri.DataBindings.Add("Text", DataSource, "giatri");
         }
     }
 }
