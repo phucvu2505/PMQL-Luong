@@ -138,7 +138,7 @@
             this.txtgiatri.Name = "txtgiatri";
             this.txtgiatri.Size = new System.Drawing.Size(176, 20);
             this.txtgiatri.TabIndex = 3;
-            this.txtgiatri.EditValueChanged += new System.EventHandler(this.txtgiatri_EditValueChanged);
+            this.txtgiatri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtgiatri_KeyPress);
             // 
             // txtma
             // 

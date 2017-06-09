@@ -254,5 +254,7 @@ namespace PMQL_Luong.UserControl
                 report.ShowDialog();
             }
         }
+
+       
     }
 }

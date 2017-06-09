@@ -383,14 +383,13 @@ namespace PMQL_Luong.UserControl
                 }
             }
         }
-
-        private void txtgiatri_EditValueChanged(object sender, KeyPressEventArgs e)
+        private void txtgiatri_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 errorProvider1.Icon = Properties.Resources.ic_nook;
                 errorProvider1.SetError(txtgiatri, "Không được nhập chữ");
-                e.Handled=true;
+                e.Handled = true;
             }
         }
     }
