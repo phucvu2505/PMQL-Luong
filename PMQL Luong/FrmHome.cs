@@ -11,6 +11,7 @@ using PMQL_Luong.Entities;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
 using PMQL_Luong.UserControl;
+using DevExpress.XtraEditors;
 
 namespace PMQL_Luong
 {
@@ -30,8 +31,8 @@ namespace PMQL_Luong
         private XtraTabPage xtraTienTamUng;
         private XtraTabPage xtraThongKeNhanVien;
         private XtraTabPage xtraNhanVien;
+        private XtraTabPage xtraTimKiemLuong;
         private XtraTabPage xtraThongKeLuong;
-
         private UcPhongBan ucPhongban;
         private UcQuanLyTaiKhoan ucQuanlytaikhoan;
         private UcHeSoLuong ucHesoluong;
@@ -42,6 +43,7 @@ namespace PMQL_Luong
         private UcUngtien ucTientamung;
         private UcThongkeNhanvien ucThongkenhanvien;
         private UcNhanVien ucNhanvien;
+        private UcTimKiemLuong ucTimkiemluong;
         private UcThongKeLuong ucThongKeLuong;
 
         public FrmHome()
@@ -119,8 +121,8 @@ namespace PMQL_Luong
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
-            //DevExpress.UserSkins.BonusSkins.Register();
-            //DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGallery(ribbonGalleryBarItem1, true);
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGallery(ribbonGalleryBarItem1, true);
             timer1.Start();
         }
 
@@ -228,6 +230,7 @@ namespace PMQL_Luong
                 ucTienthuong.Dock = DockStyle.Fill;
             }
             xtraTabMain.SelectedTabPage = xtraTienThuong;
+            //XtraMessageBox.Show("Hệ thống đang bảo trì", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnChucVu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -307,7 +310,18 @@ namespace PMQL_Luong
 
         private void btnTimKiemLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //if (!xtraTabMain.TabPages.Contains(xtraTimKiemLuong))
+            //{
+            //    xtraTimKiemLuong = new XtraTabPage();
+            //    ucTimkiemluong = new UcTimKiemLuong(strConnect);
+            //    xtraTimKiemLuong.Controls.Add(ucTimkiemluong);
+            //    xtraTabMain.TabPages.Add(xtraTimKiemLuong);
 
+            //    xtraTimKiemLuong.Text = "Tìm kiếm thông tin lương";
+            //    ucTimkiemluong.Dock = DockStyle.Fill;
+            //}
+            //xtraTabMain.SelectedTabPage = xtraTimKiemLuong;
+            XtraMessageBox.Show("Hệ thống đang bảo trì", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnDanhSachLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

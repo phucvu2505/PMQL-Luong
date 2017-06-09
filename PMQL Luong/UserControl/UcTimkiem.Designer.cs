@@ -28,20 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcTimkiem));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNhanvien = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.cbnphongban = new System.Windows.Forms.ComboBox();
             this.cbnChucvu = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gC_danhsach = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.txtNhanvien = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhanvien.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gC_danhsach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -50,9 +52,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtNhanvien);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.simpleButton3);
+            this.groupBox1.Controls.Add(this.simpleButton2);
+            this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Controls.Add(this.cbnphongban);
             this.groupBox1.Controls.Add(this.cbnChucvu);
             this.groupBox1.Controls.Add(this.label2);
@@ -66,8 +68,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin cần tìm kiếm";
             // 
+            // txtNhanvien
+            // 
+            this.txtNhanvien.Location = new System.Drawing.Point(87, 328);
+            this.txtNhanvien.Name = "txtNhanvien";
+            this.txtNhanvien.Size = new System.Drawing.Size(167, 20);
+            this.txtNhanvien.TabIndex = 1;
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
+            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.simpleButton3.Location = new System.Drawing.Point(9, 385);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(235, 37);
+            this.simpleButton3.TabIndex = 1;
+            this.simpleButton3.Text = "TÌM KIẾM TÊN NHÂN VIÊN";
+            this.simpleButton3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
+            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.simpleButton2.Location = new System.Drawing.Point(14, 224);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(235, 37);
+            this.simpleButton2.TabIndex = 1;
+            this.simpleButton2.Text = "TÌM KIẾM PHÒNG BAN";
+            this.simpleButton2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.simpleButton1.Location = new System.Drawing.Point(14, 70);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(235, 37);
+            this.simpleButton1.TabIndex = 1;
+            this.simpleButton1.Text = "TÌM KIẾM CHỨC VỤ";
+            this.simpleButton1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // cbnphongban
             // 
+            this.cbnphongban.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbnphongban.FormattingEnabled = true;
             this.cbnphongban.Location = new System.Drawing.Point(80, 176);
             this.cbnphongban.Name = "cbnphongban";
@@ -76,11 +119,21 @@
             // 
             // cbnChucvu
             // 
+            this.cbnChucvu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbnChucvu.FormattingEnabled = true;
             this.cbnChucvu.Location = new System.Drawing.Point(80, 29);
             this.cbnChucvu.Name = "cbnChucvu";
             this.cbnChucvu.Size = new System.Drawing.Size(174, 21);
             this.cbnChucvu.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 331);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Tên nhân viên";
             // 
             // label3
             // 
@@ -128,52 +181,6 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(9, 73);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(235, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "tìm kiếm theo chức vụ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(9, 225);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(235, 38);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "tìm kiếm theo phòng ban";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 331);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "tên nhân viên";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(9, 378);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(235, 38);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "tìm kiếm theo tên nhân viên";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // txtNhanvien
-            // 
-            this.txtNhanvien.Location = new System.Drawing.Point(80, 328);
-            this.txtNhanvien.Name = "txtNhanvien";
-            this.txtNhanvien.Size = new System.Drawing.Size(169, 21);
-            this.txtNhanvien.TabIndex = 4;
-            // 
             // UcTimkiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +191,7 @@
             this.Size = new System.Drawing.Size(726, 485);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhanvien.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gC_danhsach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -201,10 +209,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private DevExpress.XtraGrid.GridControl gC_danhsach;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtNhanvien;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
+        private DevExpress.XtraEditors.TextEdit txtNhanvien;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

@@ -31,26 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChucVu));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.btn_Them = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Sua = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Xoa = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btn_Them = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Sua = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Xoa = new DevExpress.XtraBars.BarButtonItem();
             this.gcNhap = new DevExpress.XtraEditors.GroupControl();
+            this.button1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.txtChucvu = new System.Windows.Forms.TextBox();
-            this.txtTenChucVu = new System.Windows.Forms.TextBox();
-            this.txtMota = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.vScrollBar1 = new DevExpress.XtraEditors.VScrollBar();
+            this.txtChucvu = new DevExpress.XtraEditors.TextEdit();
+            this.txtTenChucVu = new DevExpress.XtraEditors.TextEdit();
+            this.txtMota = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcNhap)).BeginInit();
             this.gcNhap.SuspendLayout();
@@ -58,12 +59,13 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChucvu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenChucVu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMota.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -73,50 +75,14 @@
             this.btn_Them,
             this.btn_Sua,
             this.btn_Xoa});
-            this.barManager1.MaxItemId = 3;
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Them, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Sua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Xoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.Text = "Tools";
-            // 
-            // btn_Them
-            // 
-            this.btn_Them.Caption = "Thêm";
-            this.btn_Them.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_Them.Glyph")));
-            this.btn_Them.Id = 0;
-            this.btn_Them.Name = "btn_Them";
-            this.btn_Them.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Them_ItemClick);
-            // 
-            // btn_Sua
-            // 
-            this.btn_Sua.Caption = "Sửa";
-            this.btn_Sua.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_Sua.Glyph")));
-            this.btn_Sua.Id = 1;
-            this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Sua_ItemClick);
-            // 
-            // btn_Xoa
-            // 
-            this.btn_Xoa.Caption = "Xóa";
-            this.btn_Xoa.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_Xoa.Glyph")));
-            this.btn_Xoa.Id = 2;
-            this.btn_Xoa.Name = "btn_Xoa";
-            this.btn_Xoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Xoa_ItemClick);
+            this.barManager1.MaxItemId = 6;
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(754, 47);
+            this.barDockControlTop.Size = new System.Drawing.Size(754, 0);
             // 
             // barDockControlBottom
             // 
@@ -129,37 +95,98 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 459);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 506);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(754, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 459);
+            this.barDockControlRight.Location = new System.Drawing.Point(754, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 506);
+            // 
+            // btn_Them
+            // 
+            this.btn_Them.Id = 3;
+            this.btn_Them.Name = "btn_Them";
+            // 
+            // btn_Sua
+            // 
+            this.btn_Sua.Id = 4;
+            this.btn_Sua.Name = "btn_Sua";
+            // 
+            // btn_Xoa
+            // 
+            this.btn_Xoa.Id = 5;
+            this.btn_Xoa.Name = "btn_Xoa";
             // 
             // gcNhap
             // 
-            this.gcNhap.Controls.Add(this.vScrollBar1);
-            this.gcNhap.Controls.Add(this.button1);
             this.gcNhap.Controls.Add(this.txtMota);
             this.gcNhap.Controls.Add(this.txtTenChucVu);
             this.gcNhap.Controls.Add(this.txtChucvu);
+            this.gcNhap.Controls.Add(this.button1);
+            this.gcNhap.Controls.Add(this.simpleButton3);
+            this.gcNhap.Controls.Add(this.simpleButton2);
+            this.gcNhap.Controls.Add(this.simpleButton1);
             this.gcNhap.Controls.Add(this.label3);
             this.gcNhap.Controls.Add(this.label2);
             this.gcNhap.Controls.Add(this.label1);
             this.gcNhap.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gcNhap.Location = new System.Drawing.Point(464, 47);
+            this.gcNhap.Location = new System.Drawing.Point(464, 0);
             this.gcNhap.Name = "gcNhap";
-            this.gcNhap.Size = new System.Drawing.Size(290, 459);
+            this.gcNhap.Size = new System.Drawing.Size(290, 506);
             this.gcNhap.TabIndex = 5;
             this.gcNhap.Text = "Thông tin chức vụ";
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(165, 275);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 50);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "LƯU";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Image = global::PMQL_Luong.Properties.Resources.close_delete_2;
+            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.simpleButton3.Location = new System.Drawing.Point(177, 35);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(90, 50);
+            this.simpleButton3.TabIndex = 5;
+            this.simpleButton3.Text = "XÓA";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Image = global::PMQL_Luong.Properties.Resources.pencil_edit;
+            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.simpleButton2.Location = new System.Drawing.Point(91, 35);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(89, 50);
+            this.simpleButton2.TabIndex = 5;
+            this.simpleButton2.Text = "SỬA";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Image = global::PMQL_Luong.Properties.Resources.plus;
+            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.simpleButton1.Location = new System.Drawing.Point(6, 35);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(88, 50);
+            this.simpleButton1.TabIndex = 5;
+            this.simpleButton1.Text = "THÊM";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 283);
+            this.label3.Location = new System.Drawing.Point(7, 226);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 1;
@@ -177,7 +204,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 87);
+            this.label1.Location = new System.Drawing.Point(6, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
@@ -187,9 +214,9 @@
             // 
             this.groupControl2.Controls.Add(this.gridControl1);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 47);
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(464, 459);
+            this.groupControl2.Size = new System.Drawing.Size(464, 506);
             this.groupControl2.TabIndex = 6;
             this.groupControl2.Text = "Bảng chức vụ";
             // 
@@ -200,7 +227,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(460, 437);
+            this.gridControl1.Size = new System.Drawing.Size(460, 484);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -214,43 +241,25 @@
             // 
             // txtChucvu
             // 
-            this.txtChucvu.Location = new System.Drawing.Point(92, 84);
+            this.txtChucvu.Location = new System.Drawing.Point(91, 137);
+            this.txtChucvu.MenuManager = this.barManager1;
             this.txtChucvu.Name = "txtChucvu";
-            this.txtChucvu.Size = new System.Drawing.Size(175, 21);
-            this.txtChucvu.TabIndex = 2;
+            this.txtChucvu.Size = new System.Drawing.Size(176, 20);
+            this.txtChucvu.TabIndex = 6;
             // 
             // txtTenChucVu
             // 
-            this.txtTenChucVu.Location = new System.Drawing.Point(92, 179);
+            this.txtTenChucVu.Location = new System.Drawing.Point(91, 179);
             this.txtTenChucVu.Name = "txtTenChucVu";
-            this.txtTenChucVu.Size = new System.Drawing.Size(175, 21);
-            this.txtTenChucVu.TabIndex = 2;
+            this.txtTenChucVu.Size = new System.Drawing.Size(176, 20);
+            this.txtTenChucVu.TabIndex = 6;
             // 
             // txtMota
             // 
-            this.txtMota.Location = new System.Drawing.Point(92, 280);
+            this.txtMota.Location = new System.Drawing.Point(91, 223);
             this.txtMota.Name = "txtMota";
-            this.txtMota.Size = new System.Drawing.Size(175, 21);
-            this.txtMota.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(63, 354);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 42);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Lưu";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(272, 20);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Opacity = 1F;
-            this.vScrollBar1.Size = new System.Drawing.Size(16, 437);
-            this.vScrollBar1.TabIndex = 4;
+            this.txtMota.Size = new System.Drawing.Size(176, 20);
+            this.txtMota.TabIndex = 6;
             // 
             // UcChucVu
             // 
@@ -272,6 +281,9 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChucvu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenChucVu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMota.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,7 +292,6 @@
         #endregion
 
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -295,10 +306,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMota;
-        private System.Windows.Forms.TextBox txtTenChucVu;
-        private System.Windows.Forms.TextBox txtChucvu;
-        private System.Windows.Forms.Button button1;
-        private DevExpress.XtraEditors.VScrollBar vScrollBar1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton button1;
+        private DevExpress.XtraEditors.TextEdit txtMota;
+        private DevExpress.XtraEditors.TextEdit txtTenChucVu;
+        private DevExpress.XtraEditors.TextEdit txtChucvu;
     }
 }

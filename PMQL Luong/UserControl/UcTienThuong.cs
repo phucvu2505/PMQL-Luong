@@ -144,7 +144,7 @@ namespace PMQL_Luong.UserControl
             DataTable dt = new DataTable();
             da.Fill(dt);
             grid_nhanvien.DataSource = dt;
-            grv_nhanvien.Columns["machitiet"].Visible = false;
+            grv_nhanvien.Columns["machitiet"].Visible = false;                
             grv_nhanvien.Columns["tennhanvien"].Caption = "Nhân viên thưởng";
             grv_nhanvien.Columns["tennhanvien"].BestFit();
             grv_nhanvien.Columns["mota"].Caption = "Mô tả";
