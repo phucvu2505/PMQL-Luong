@@ -32,10 +32,10 @@ namespace PMQL_Luong.UserControl
                 gBmucphat.Visible = true;
                 gbNguoiphat.Visible = true;
                 txtma.Enabled = false;
+                txtnguoighi.Enabled=false;
             }
             loadmucphat();
             loadtienphat();
-            loadcbnNhanvien1();
             loadcbnNhanvien2();
             loadcbntienphat();
         }
@@ -53,9 +53,11 @@ namespace PMQL_Luong.UserControl
         }
         void loadtienphat()
         {
-            SqlCommand com = new SqlCommand(@"select ct.machitiet,nv.tennhanvien,tp.tenmucphat,tp.giatri,ct.ngay,nv.tennhanvien 
+            SqlCommand com = new SqlCommand(@"select ct.machitiet,nv.tennhanvien,tp.tenmucphat,tp.giatri,ct.ngay,b.tennhanvien as nvghi
                                               from chitiettienphat ct join nhanvien nv on nv.manhanvien=ct.manv 
-                                              join tienphat tp on tp.maphat=ct.matienphat", StrCnn);
+                                              join tienphat tp on tp.maphat=ct.matienphat 
+                                              join (select ct.machitiet,nv.tennhanvien from chitiettienphat ct 
+                                                    join nhanvien nv on ct.manvghi=nv.manhanvien) b on ct.machitiet=b.machitiet", StrCnn);
             SqlDataAdapter dt = new SqlDataAdapter(com);
             DataTable tb = new DataTable();
             dt.Fill(tb);
@@ -65,7 +67,7 @@ namespace PMQL_Luong.UserControl
             gridView2.Columns["tenmucphat"].Caption = "Tên mức phạt";
             gridView2.Columns["giatri"].Caption = "Giá trị";
             gridView2.Columns["ngay"].Caption = "Ngày";
-            gridView2.Columns["tennhanvien"].Caption = "Người ghi";
+            gridView2.Columns["nvghi"].Caption = "Người ghi";
 
         }
         void loadcbntienphat()
@@ -79,17 +81,7 @@ namespace PMQL_Luong.UserControl
             cbntenmuc.ValueMember = "maphat";
             cbntenmuc.SelectedIndex = -1;
         }
-        void loadcbnNhanvien1()
-        {
-            SqlCommand com = new SqlCommand(@"select * from nhanvien", StrCnn);
-            SqlDataAdapter dt = new SqlDataAdapter(com);
-            DataTable tb = new DataTable();
-            dt.Fill(tb);
-            cbnnguoighi.DataSource = tb;
-            cbnnguoighi.DisplayMember = "tennhanvien";
-            cbnnguoighi.ValueMember = "manhanvien";
-            cbnnguoighi.SelectedIndex = -1;
-        }
+        
         void loadcbnNhanvien2()
         {
             SqlCommand com = new SqlCommand(@"select * from nhanvien", StrCnn);
@@ -117,7 +109,18 @@ namespace PMQL_Luong.UserControl
             }
             return check;
         }
-
+        public string tentaikhoan()
+        {
+            SqlCommand com = new SqlCommand(@"select tennhanvien from nhanvien where manhanvien=@ma", StrCnn);
+            com.CommandType = CommandType.Text;
+            com.Parameters.Add(new SqlParameter("@ma", nd.Id));
+            SqlDataAdapter dt = new SqlDataAdapter(com);
+            DataTable tb = new DataTable();
+            dt.Fill(tb);
+            DataRow dr = tb.Rows[0];
+            string ten = dr["tennhanvien"].ToString();
+            return ten;
+        }
         private List<string> Getdanhsachnhanvien(string manhanvien)
         {
             List<string> ls = new List<string>();
@@ -174,10 +177,93 @@ namespace PMQL_Luong.UserControl
             return dsma;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            txtma.Text = TaoMaphat();
+            btn_suangphat.Enabled = false;
+            btn_xoangphat.Enabled = false;
+            txtnguoighi.Text = tentaikhoan();
+            txtnguoighi.Enabled = false;
+            cbntenmuc.SelectedIndex = -1;
+            cbntenngbiphat.SelectedIndex = -1;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //btn_themngphat.Enabled = false;
+            //btn_XoaPhat.Enabled = false;
+            txtnguoighi.Text = tentaikhoan();
+            txtnguoighi.Enabled = false;
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thay đổi không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                try
+                {
+                    string ma = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "machitiet").ToString();
+                    SqlCommand com = new SqlCommand("SP_SuaChitietphat", StrCnn);
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.Add(new SqlParameter("@machitiet", ma));
+                    com.Parameters.Add(new SqlParameter("@nguoibiphat", cbntenngbiphat.SelectedValue));
+                    com.Parameters.Add(new SqlParameter("@maphat", cbntenmuc.SelectedValue));
+                    com.Parameters.Add(new SqlParameter("@ngay", dateTimePicker1.Value));
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Bạn sửa thành công!");
+                    loadtienphat();
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            btn_themngphat.Enabled = true;
+            btn_XoaPhat.Enabled = true;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //btn_themngphat.Enabled = false;
+            //btn_suangphat.Enabled = false;
+            string ma = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "machitiet").ToString();
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                try
+                {
+                    SqlCommand com = new SqlCommand("SP_XoaChitietphat", StrCnn);
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.Add(new SqlParameter("@machitiet", ma));
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Bạn xóa thành công!");
+                    loadtienphat();
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            btn_themngphat.Enabled = true;
+            btn_suangphat.Enabled = true;
+        }
+
+        private void gcmucphat_Click(object sender, EventArgs e)
+        {
+            txtma.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maphat").ToString();
+            txtten.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "tenmucphat").ToString();
+            txtgiatri.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "giatri").ToString();
             txtma.Enabled = false;
+
+        }
+
+        private void gctienphat_Click(object sender, EventArgs e)
+        {
+
+            dateTimePicker1.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "ngay").ToString();
+            cbntenngbiphat.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "tennhanvien").ToString();
+            cbntenmuc.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "tenmucphat").ToString();
+            txtnguoighi.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "nvghi").ToString();
+        }
+
+        private void btn_luuphat_Click(object sender, EventArgs e)
+        {
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
@@ -197,15 +283,49 @@ namespace PMQL_Luong.UserControl
                     XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            txtma.Clear();
-            txtten.Clear();
-            txtgiatri.Clear();
+
+            txtten.Text = "";
+            txtgiatri.Text = "";
+            txtma.Refresh();
+            txtten.Refresh();
+            txtgiatri.Refresh();
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btn_luungphat_Click(object sender, EventArgs e)
         {
+            
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                try
+                {
+                    SqlCommand com = new SqlCommand("SP_ThemChitietphat", StrCnn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.Add(new SqlParameter("@nguoibiphat", cbntenngbiphat.SelectedValue));
+                com.Parameters.Add(new SqlParameter("@maphat", cbntenmuc.SelectedValue));
+                com.Parameters.Add(new SqlParameter("@ngay", dateTimePicker1.Value));
+                com.Parameters.Add(new SqlParameter("@nguoighi", nd.Id));
+                com.ExecuteNonQuery();
+                MessageBox.Show("Bạn thêm thành công!");
+                loadtienphat();
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            btn_suangphat.Enabled = true;
+            btn_xoangphat.Enabled = true;
+            cbntenmuc.SelectedIndex = -1;
+            cbntenngbiphat.SelectedIndex = -1;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            
             string ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maphat").ToString();
+
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thay đổi không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
@@ -225,14 +345,26 @@ namespace PMQL_Luong.UserControl
                     XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            txtma.Clear();
-            txtten.Clear();
-            txtgiatri.Clear();
+            
+            txtma.Refresh();
+            txtten.Refresh();
+            txtgiatri.Refresh();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn__Click(object sender, EventArgs e)
         {
+            txtma.Text = TaoMaphat();
+            txtma.Enabled = false;
+            txtten.Text = "";
+            txtgiatri.Text = "";
+            
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            
             string ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maphat").ToString();
+
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
@@ -252,98 +384,14 @@ namespace PMQL_Luong.UserControl
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void txtgiatri_EditValueChanged(object sender, KeyPressEventArgs e)
         {
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialog == DialogResult.Yes)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                try
-                {
-                    SqlCommand com = new SqlCommand("SP_ThemChitietphat", StrCnn);
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.Add(new SqlParameter("@nguoibiphat", cbntenngbiphat.SelectedValue));
-                    com.Parameters.Add(new SqlParameter("@maphat", cbntenmuc.SelectedValue));
-                    com.Parameters.Add(new SqlParameter("@ngay", dateTimePicker1.Value));
-                    com.Parameters.Add(new SqlParameter("@nguoighi", cbnnguoighi.SelectedValue));
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn thêm thành công!");
-                    loadtienphat();
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            cbnnguoighi.SelectedIndex = -1;
-            cbntenmuc.SelectedIndex = -1;
-            cbntenngbiphat.SelectedIndex = -1;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thay đổi không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialog == DialogResult.Yes)
-            {
-                try
-                {
-                    string ma = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "machitiet").ToString();
-                    SqlCommand com = new SqlCommand("SP_SuaChitietphat", StrCnn);
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.Add(new SqlParameter("@machitiet", ma));
-                    com.Parameters.Add(new SqlParameter("@nguoibiphat", cbntenngbiphat.SelectedValue));
-                    com.Parameters.Add(new SqlParameter("@maphat", cbntenmuc.SelectedValue));
-                    com.Parameters.Add(new SqlParameter("@ngay", dateTimePicker1.Value));
-                    com.Parameters.Add(new SqlParameter("@nguoighi", cbnnguoighi.SelectedValue));
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn sửa thành công!");
-                    loadtienphat();
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                errorProvider1.Icon = Properties.Resources.ic_nook;
+                errorProvider1.SetError(txtgiatri, "Không được nhập chữ");
+                e.Handled=true;
             }
         }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            string ma = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "machitiet").ToString();
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialog == DialogResult.Yes)
-            {
-                try
-                {
-                    SqlCommand com = new SqlCommand("SP_XoaChitietphat", StrCnn);
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.Add(new SqlParameter("@machitiet", ma));
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn xóa thành công!");
-                    loadtienphat();
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void gcmucphat_Click(object sender, EventArgs e)
-        {
-            txtma.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maphat").ToString();
-            txtten.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "tenmucphat").ToString();
-            txtgiatri.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "giatri").ToString();
-            txtma.Enabled = false;
-
-        }
-
-        private void gctienphat_Click(object sender, EventArgs e)
-        {
-
-            dateTimePicker1.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "ngay").ToString();
-            cbntenngbiphat.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "tennhanvien").ToString();
-            cbntenmuc.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "tenmucphat").ToString();
-            cbnnguoighi.Text = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "tennhanvien").ToString();
-        }
-
     }
 }

@@ -18,6 +18,7 @@ namespace PMQL_Luong.UserControl
         SqlConnection StrCnn;
         User nd;
         string ma;
+        string manhanvien;
         public UcUngtien(SqlConnection str, User ndg)
         {
             InitializeComponent();
@@ -25,12 +26,23 @@ namespace PMQL_Luong.UserControl
             nd = ndg;
             if (!KiemTraQuyenTruyCap())
             {
-                groupBox1.Visible = false;
+                button1.Visible = false;
+                button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                comboBox1.Enabled = false;
+                dateTimePicker1.Enabled = false;
+                dateTimePicker2.Enabled = false;
+                textBox1.Enabled = false;
             }
             else
             {
-                groupBox1.Visible = true;
+                button1.Visible = true;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
             }
+            textBox1.Enabled = false;
             loaddanhsach();
             loadcbnNhanvien();
         }
@@ -69,6 +81,20 @@ namespace PMQL_Luong.UserControl
             }
             return ls;
         }
+        public float tienung(string manhanvien)
+        {
+            float giatri;
+            SqlCommand command = new SqlCommand(@"select luong from nhanvien where manhanvien= @nhanvien", StrCnn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.Add(new SqlParameter("@nhanvien", manhanvien));
+            SqlDataAdapter dt = new SqlDataAdapter(command);
+            DataTable tb = new DataTable();
+            dt.Fill(tb);
+            DataRow dr = tb.Rows[0];
+            float tienluong = float.Parse(dr["luong"].ToString());
+            giatri = tienluong / 2;
+            return giatri;
+        }
         void loadcbnNhanvien()
         {
             SqlCommand com = new SqlCommand(@"select * from nhanvien", StrCnn);
@@ -82,27 +108,34 @@ namespace PMQL_Luong.UserControl
         }
         void loaddanhsach()
         {
-            SqlCommand com = new SqlCommand(@"select u.maungtien,nv.tennhanvien,u.ngayung,u.ngaynhantien,u.giatri 
+            SqlCommand com = new SqlCommand(@"select u.maungtien,u.manhanvien,nv.tennhanvien,u.ngayung,u.ngaynhantien,u.giatri 
                                               from ungtien u join nhanvien nv on nv.manhanvien=u.manhanvien", StrCnn);
             SqlDataAdapter dt = new SqlDataAdapter(com);
             DataTable tb = new DataTable();
             dt.Fill(tb);
             gridControl1.DataSource = tb;
-            gridView1.Columns["maungtien"].Visible=false;
+            gridView1.Columns["maungtien"].Visible = false;
+            gridView1.Columns["manhanvien"].Visible = false;
             gridView1.Columns["tennhanvien"].Caption = "Nhân viên";
             gridView1.Columns["ngayung"].Caption = "Ngày ứng";
             gridView1.Columns["ngaynhantien"].Caption = "Ngày nhận";
             gridView1.Columns["giatri"].Caption = "Giá trị";
-            
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            textBox1.Visible = false;
+            label4.Visible = false;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ma= gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maungtien").ToString(); 
+            
+            button4.Visible = false;
+            ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maungtien").ToString();
+            manhanvien = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "manhanvien").ToString();
+            textBox1.Enabled = false;
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn sửa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
@@ -110,26 +143,35 @@ namespace PMQL_Luong.UserControl
                 {
                     SqlCommand com = new SqlCommand("SP_Suaungtien", StrCnn);
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.Add(new SqlParameter("@ma",ma));
+                    com.Parameters.Add(new SqlParameter("@ma", ma));
                     com.Parameters.Add(new SqlParameter("@nguoinhan", comboBox1.SelectedValue));
                     com.Parameters.Add(new SqlParameter("@ngayung", dateTimePicker1.Value));
                     com.Parameters.Add(new SqlParameter("@ngaynhan", dateTimePicker2.Value));
-                    com.Parameters.Add(new SqlParameter("@giatri", textBox1.Text));
+                    com.Parameters.Add(new SqlParameter("@giatri", tienung(manhanvien).ToString()));
                     com.ExecuteNonQuery();
                     MessageBox.Show("Bạn sửa thành công!");
                     loaddanhsach();
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button4.Visible = true;
                 }
                 catch
                 {
                     XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            button4.Visible = true;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
+            button4.Visible = false;
+            button5.Visible = false;
             ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maungtien").ToString();
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn sửa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
                 try
@@ -140,22 +182,34 @@ namespace PMQL_Luong.UserControl
                     com.ExecuteNonQuery();
                     MessageBox.Show("Bạn xóa thành công!");
                     loaddanhsach();
+                    button1.Enabled = true;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                    button5.Visible = true;
                 }
                 catch
                 {
                     XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            
+            button4.Visible = true;
+            button5.Visible = true;
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maungtien").ToString();
+            manhanvien = comboBox1.SelectedValue.ToString();
+            textBox1.Text = tienung(manhanvien).ToString();
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
                 try
                 {
+
                     SqlCommand com = new SqlCommand("SP_Themungtien", StrCnn);
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.Add(new SqlParameter("@nguoinhan", comboBox1.SelectedValue));
@@ -165,12 +219,20 @@ namespace PMQL_Luong.UserControl
                     com.ExecuteNonQuery();
                     MessageBox.Show("Bạn thêm thành công!");
                     loaddanhsach();
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    textBox1.Visible = true;
+                    label4.Visible = true;
                 }
                 catch
                 {
                     XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            textBox1.Visible = true;
+            label4.Visible = true;
+
         }
 
         private void gridControl1_Click(object sender, EventArgs e)
@@ -179,13 +241,13 @@ namespace PMQL_Luong.UserControl
             dateTimePicker2.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ngaynhantien").ToString();
             comboBox1.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "tennhanvien").ToString();
             textBox1.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "giatri").ToString();
-            
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             ma = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "maungtien").ToString();
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn in không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes)
             {
                 XtrareportUngtien report = new XtrareportUngtien(StrCnn, ma);
