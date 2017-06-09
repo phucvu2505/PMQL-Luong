@@ -244,6 +244,7 @@
             this.btnDanhSachLuong.Name = "btnDanhSachLuong";
             this.btnDanhSachLuong.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnDanhSachLuong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDanhSachLuong_ItemClick);
             // 
             // ribbonPage1
             // 

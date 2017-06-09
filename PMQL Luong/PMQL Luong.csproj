@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\HeSoLuong.cs" />
+    <Compile Include="Entities\NhanVien.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
@@ -129,6 +130,12 @@
     </Compile>
     <Compile Include="UserControl\UcQuanLyTaiKhoan.Designer.cs">
       <DependentUpon>UcQuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UcThongKeLuong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcThongKeLuong.Designer.cs">
+      <DependentUpon>UcThongKeLuong.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UcThongkeNhanvien.cs">
       <SubType>UserControl</SubType>
@@ -210,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcQuanLyTaiKhoan.resx">
       <DependentUpon>UcQuanLyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcThongKeLuong.resx">
+      <DependentUpon>UcThongKeLuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcThongkeNhanvien.resx">
       <DependentUpon>UcThongkeNhanvien.cs</DependentUpon>
