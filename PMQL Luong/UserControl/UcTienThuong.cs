@@ -40,6 +40,8 @@ namespace PMQL_Luong.UserControl
             btn_xoanv.Enabled = false;
             btn_luu.Visible = false;
             btn_huy.Visible = false;
+            btn_luu2.Visible = false;
+            btn_huy2.Visible = false;
             txt_nvghinhan.Text = user.Name;
         }
 
@@ -126,58 +128,74 @@ namespace PMQL_Luong.UserControl
 
         private void loadDataTienthuong()
         {
-            SqlCommand command = new SqlCommand("select * from tienthuong", strConnect);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            grid_thuong.DataSource = dt;
-            grv_thuong.Columns["mathuong"].Caption = "Mã thưởng";
-            grv_thuong.Columns["mota"].Caption = "Mô tả";
-            grv_thuong.Columns["giatri"].Caption = "Tiền thưởng";
+            try
+            {
+                SqlCommand command = new SqlCommand("select * from tienthuong", strConnect);
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                grid_thuong.DataSource = dt;
+                grv_thuong.Columns["mathuong"].Caption = "Mã thưởng";
+                grv_thuong.Columns["mota"].Caption = "Mô tả";
+                grv_thuong.Columns["giatri"].Caption = "Tiền thưởng";
+            }
+            catch { }
         }
 
         private void loadDataNhanvienthuong()
         {
-            SqlCommand command = new SqlCommand("SP_HienthiNhanvienThuong", strConnect);
-            command.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            grid_nhanvien.DataSource = dt;
-            grv_nhanvien.Columns["machitiet"].Visible = false;                
-            grv_nhanvien.Columns["tennhanvien"].Caption = "Nhân viên thưởng";
-            grv_nhanvien.Columns["tennhanvien"].BestFit();
-            grv_nhanvien.Columns["mota"].Caption = "Mô tả";
-            grv_nhanvien.Columns["giatri"].Caption = "Tiền thưởng";
-            grv_nhanvien.Columns["ngay"].Caption = "Ngày thưởng";
-            grv_nhanvien.Columns["ngay"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            grv_nhanvien.Columns["ngay"].DisplayFormat.FormatString = "dd/MM/yyyy";
-            grv_nhanvien.Columns["tennhanvien"].Caption = "Nhân viên ghi nhận";
-            grv_nhanvien.Columns["tennhanvien"].BestFit();
+            try
+            {
+                SqlCommand command = new SqlCommand("SP_HienthiNhanvienThuong", strConnect);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                grid_nhanvien.DataSource = dt;
+                grv_nhanvien.Columns["machitiet"].Visible = false;
+                grv_nhanvien.Columns["tennhanvien"].Caption = "Nhân viên thưởng";
+                grv_nhanvien.Columns["tennhanvien"].BestFit();
+                grv_nhanvien.Columns["mota"].Caption = "Mô tả";
+                grv_nhanvien.Columns["giatri"].Caption = "Tiền thưởng";
+                grv_nhanvien.Columns["ngay"].Caption = "Ngày thưởng";
+                grv_nhanvien.Columns["ngay"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                grv_nhanvien.Columns["ngay"].DisplayFormat.FormatString = "dd/MM/yyyy";
+                grv_nhanvien.Columns["nhanvienghi"].Caption = "Nhân viên ghi nhận";
+                grv_nhanvien.Columns["nhanvienghi"].BestFit();
+            }
+            catch { }
         }
 
         private void loadComboBoxNhanvien()
         {
-            SqlCommand command = new SqlCommand("select * from Nhanvien", strConnect);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            cmp_tennv.DataSource = dt;
-            cmp_tennv.DisplayMember = "tennhanvien";
-            cmp_tennv.ValueMember = "manhanvien";
-            cmp_tennv.SelectedIndex = -1;
+            try
+            {
+                SqlCommand command = new SqlCommand("select * from Nhanvien", strConnect);
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cmp_tennv.DataSource = dt;
+                cmp_tennv.DisplayMember = "tennhanvien";
+                cmp_tennv.ValueMember = "manhanvien";
+                cmp_tennv.SelectedIndex = -1;
+            }
+            catch { }
         }
 
         private void loadComboBoxMucthuong()
         {
-            SqlCommand command = new SqlCommand("select * from tienthuong", strConnect);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            cmp_mucthuong.DataSource = dt;
-            cmp_mucthuong.DisplayMember = "mota";
-            cmp_mucthuong.ValueMember = "mathuong";
-            cmp_mucthuong.SelectedIndex = -1;
+            try
+            {
+                SqlCommand command = new SqlCommand("select * from tienthuong", strConnect);
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cmp_mucthuong.DataSource = dt;
+                cmp_mucthuong.DisplayMember = "mota";
+                cmp_mucthuong.ValueMember = "mathuong";
+                cmp_mucthuong.SelectedIndex = -1;
+            }
+            catch { }
         }
 
         private List<string> Getdanhsachthuong(string sql)
@@ -256,10 +274,11 @@ namespace PMQL_Luong.UserControl
         {
             try
             {
+                string ma = grv_nhanvien.GetRowCellValue(grv_nhanvien.FocusedRowHandle, "machitiet").ToString();
                 dtp_ngaythuong.Text = grv_nhanvien.GetRowCellValue(grv_nhanvien.FocusedRowHandle, "ngay").ToString();
                 cmp_tennv.Text = grv_nhanvien.GetRowCellValue(grv_nhanvien.FocusedRowHandle, "tennhanvien").ToString();
                 cmp_mucthuong.Text = grv_nhanvien.GetRowCellValue(grv_nhanvien.FocusedRowHandle, "mota").ToString();
-                txt_nvghinhan.Text = user.Name;
+                txt_nvghinhan.Text = grv_nhanvien.GetRowCellValue(grv_nhanvien.FocusedRowHandle, "nhanvienghi").ToString();
 
                 if (!KiemTraQuyenTruyCap())
                 {
@@ -271,6 +290,8 @@ namespace PMQL_Luong.UserControl
                     btn_suanv.Enabled = true;
                     btn_xoanv.Enabled = true;
                 }
+                btn_luu2.Visible = false;
+                btn_huy2.Visible = false;
             }
             catch { }
         }
@@ -284,8 +305,8 @@ namespace PMQL_Luong.UserControl
 
             btn_luu.Visible = true;
             btn_huy.Visible = true;
-            btn_suanv.Enabled = false;
-            btn_xoanv.Enabled = false;
+            btn_suatien.Enabled = false;
+            btn_xoatien.Enabled = false;
         }
 
         private void btn_suatien_Click(object sender, EventArgs e)
@@ -342,33 +363,15 @@ namespace PMQL_Luong.UserControl
 
         private void btn_themnv_Click(object sender, EventArgs e)
         {
+            txt_nvghinhan.Text = user.Name;
+            cmp_tennv.Text = "";
+            cmp_mucthuong.Text = "";
+            dtp_ngaythuong.Text = "";
+
+            btn_luu2.Visible = true;
+            btn_huy2.Visible = true;
             btn_suanv.Enabled = false;
             btn_xoanv.Enabled = false;
-            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm mức thưởng cho nhân viên không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dialog == DialogResult.Yes)
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand("SP_ThemChitietThuong", strConnect);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add(new SqlParameter("@manv", cmp_tennv.SelectedValue));
-                    command.Parameters.Add(new SqlParameter("@matienthuong", cmp_mucthuong.SelectedValue));
-                    command.Parameters.Add(new SqlParameter("@ngay", dtp_ngaythuong.Value));
-                    command.Parameters.Add(new SqlParameter("@manvghi", user.Id));
-
-                    command.ExecuteNonQuery();
-                    XtraMessageBox.Show("Thêm nhân viên thưởng thành công", "Thông báo", MessageBoxButtons.OK);
-                    loadDataNhanvienthuong();
-                    dtp_ngaythuong.Text = "";
-                    cmp_tennv.Text = "";
-                    cmp_mucthuong.Text = "";
-                    txt_nvghinhan.Text = "";
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Thông tin nhập vào không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
 
         private void btn_suanv_Click(object sender, EventArgs e)
@@ -406,7 +409,7 @@ namespace PMQL_Luong.UserControl
         {
             string ma = grv_nhanvien.GetRowCellValue(grv_nhanvien.FocusedRowHandle, "machitiet").ToString();
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn xóa nhân viên này không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dialog == DialogResult.Yes)
+            if (dialog == DialogResult.Yes)
             {
                 try
                 {
@@ -431,7 +434,7 @@ namespace PMQL_Luong.UserControl
         private void btn_luu_Click(object sender, EventArgs e)
         {
             DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm mức thưởng", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dialog == DialogResult.Yes)
+            if (dialog == DialogResult.Yes)
             {
                 try
                 {
@@ -447,6 +450,8 @@ namespace PMQL_Luong.UserControl
                     txt_matienthuong.Text = "";
                     txt_mota.Text = "";
                     txt_giatri.Text = "";
+                    btn_luu.Visible = false;
+                    btn_huy.Visible = false;
                 }
                 catch
                 {
@@ -494,6 +499,73 @@ namespace PMQL_Luong.UserControl
             {
                 errGiatri.Icon = Properties.Resources.ic_ok;
                 errGiatri.SetError(txt_giatri, "Hệ số đúng");
+            }
+        }
+
+        private void btn_luu2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn thêm mức thưởng cho nhân viên không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("SP_ThemChitietThuong", strConnect);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@manv", cmp_tennv.SelectedValue));
+                    command.Parameters.Add(new SqlParameter("@matienthuong", cmp_mucthuong.SelectedValue));
+                    command.Parameters.Add(new SqlParameter("@ngay", dtp_ngaythuong.Value));
+                    command.Parameters.Add(new SqlParameter("@manvghi", user.Id));
+
+                    command.ExecuteNonQuery();
+                    XtraMessageBox.Show("Thêm nhân viên thưởng thành công", "Thông báo", MessageBoxButtons.OK);
+                    loadDataNhanvienthuong();
+                    dtp_ngaythuong.Text = "";
+                    cmp_tennv.Text = "";
+                    cmp_mucthuong.Text = "";
+                    txt_nvghinhan.Text = "";
+                    btn_luu2.Visible = false;
+                    btn_huy2.Visible = false;
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Thông tin nhập vào không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btn_huy2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = XtraMessageBox.Show("Bạn có muốn hủy bỏ thao tác này không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.Yes)
+            {
+                dtp_ngaythuong.Text = "";
+                cmp_tennv.Text = "";
+                cmp_mucthuong.Text = "";
+                txt_nvghinhan.Text = "";
+                btn_luu2.Visible = false;
+                btn_huy2.Visible = false;
+            }
+        }
+
+
+        private void textEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand("SP_TimKiemTienThuong", strConnect);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@timkiem", txt_timkiem.Text));
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                grid_thuong.DataSource = dt;
+                grv_thuong.Columns["mathuong"].Caption = "Mã thưởng";
+                grv_thuong.Columns["mota"].Caption = "Mô tả";
+                grv_thuong.Columns["giatri"].Caption = "Tiền thưởng";
+            }
+            catch
+            {
+                XtraMessageBox.Show("Rất tiếc, không tìm thấy thông tin cần tìm kiếm. Yêu cầu bạn nhập lại thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.cmp_timkiem = new System.Windows.Forms.ComboBox();
+            this.cmp_truongtimkiem = new System.Windows.Forms.ComboBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cmp_danhmuc = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -38,6 +38,8 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.grid_timkiem = new DevExpress.XtraGrid.GridControl();
             this.grv_timkiem = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_timkiem = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -45,11 +47,14 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_timkiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_timkiem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_timkiem.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.cmp_timkiem);
+            this.groupControl1.Controls.Add(this.txt_timkiem);
+            this.groupControl1.Controls.Add(this.labelControl3);
+            this.groupControl1.Controls.Add(this.cmp_truongtimkiem);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.cmp_danhmuc);
             this.groupControl1.Controls.Add(this.labelControl1);
@@ -60,34 +65,29 @@
             this.groupControl1.Size = new System.Drawing.Size(230, 381);
             this.groupControl1.TabIndex = 0;
             // 
-            // cmp_timkiem
+            // cmp_truongtimkiem
             // 
-            this.cmp_timkiem.FormattingEnabled = true;
-            this.cmp_timkiem.Location = new System.Drawing.Point(20, 234);
-            this.cmp_timkiem.Name = "cmp_timkiem";
-            this.cmp_timkiem.Size = new System.Drawing.Size(192, 21);
-            this.cmp_timkiem.TabIndex = 4;
+            this.cmp_truongtimkiem.FormattingEnabled = true;
+            this.cmp_truongtimkiem.Location = new System.Drawing.Point(20, 234);
+            this.cmp_truongtimkiem.Name = "cmp_truongtimkiem";
+            this.cmp_truongtimkiem.Size = new System.Drawing.Size(192, 21);
+            this.cmp_truongtimkiem.TabIndex = 4;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(20, 199);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(86, 13);
+            this.labelControl2.Size = new System.Drawing.Size(76, 13);
             this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "Thông tin tìm kiếm";
+            this.labelControl2.Text = "Trường tìm kiếm";
             // 
             // cmp_danhmuc
             // 
             this.cmp_danhmuc.FormattingEnabled = true;
-            this.cmp_danhmuc.Items.AddRange(new object[] {
-            "Hệ số lương",
-            "Tiền thưởng",
-            "Tiền phạt"});
             this.cmp_danhmuc.Location = new System.Drawing.Point(20, 159);
             this.cmp_danhmuc.Name = "cmp_danhmuc";
             this.cmp_danhmuc.Size = new System.Drawing.Size(192, 21);
             this.cmp_danhmuc.TabIndex = 2;
-            this.cmp_danhmuc.SelectedIndexChanged += new System.EventHandler(this.cmp_danhmuc_SelectedIndexChanged);
             // 
             // labelControl1
             // 
@@ -117,7 +117,6 @@
             this.btn_timkiem.Size = new System.Drawing.Size(226, 74);
             this.btn_timkiem.TabIndex = 0;
             this.btn_timkiem.Text = "Tìm kiếm";
-            this.btn_timkiem.Click += new System.EventHandler(this.btn_timkiem_Click);
             // 
             // groupControl2
             // 
@@ -147,6 +146,21 @@
             this.grv_timkiem.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
             this.grv_timkiem.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.grv_timkiem_CustomDrawRowIndicator);
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(22, 284);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(86, 13);
+            this.labelControl3.TabIndex = 5;
+            this.labelControl3.Text = "Thông tin tìm kiếm";
+            // 
+            // txt_timkiem
+            // 
+            this.txt_timkiem.Location = new System.Drawing.Point(22, 322);
+            this.txt_timkiem.Name = "txt_timkiem";
+            this.txt_timkiem.Size = new System.Drawing.Size(190, 20);
+            this.txt_timkiem.TabIndex = 6;
+            // 
             // UcTimKiemLuong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +177,7 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_timkiem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_timkiem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_timkiem.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,11 +188,13 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.SimpleButton btn_timkiem;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private System.Windows.Forms.ComboBox cmp_timkiem;
+        private System.Windows.Forms.ComboBox cmp_truongtimkiem;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private System.Windows.Forms.ComboBox cmp_danhmuc;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl grid_timkiem;
         private DevExpress.XtraGrid.Views.Grid.GridView grv_timkiem;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit txt_timkiem;
     }
 }

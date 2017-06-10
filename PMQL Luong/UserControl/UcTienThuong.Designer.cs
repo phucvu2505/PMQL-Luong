@@ -33,6 +33,8 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl2 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.btn_huy2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_luu2 = new DevExpress.XtraEditors.SimpleButton();
             this.dtp_ngaythuong = new System.Windows.Forms.DateTimePicker();
             this.cmp_tennv = new System.Windows.Forms.ComboBox();
             this.cmp_mucthuong = new System.Windows.Forms.ComboBox();
@@ -64,6 +66,8 @@
             this.grid_nhanvien = new DevExpress.XtraGrid.GridControl();
             this.grv_nhanvien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.txt_timkiem = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.grid_thuong = new DevExpress.XtraGrid.GridControl();
             this.grv_thuong = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.errGiatri = new System.Windows.Forms.ErrorProvider(this.components);
@@ -89,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grv_nhanvien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_timkiem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_thuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_thuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errGiatri)).BeginInit();
@@ -109,14 +114,16 @@
             this.groupControl4.Controls.Add(this.xtraScrollableControl2);
             this.groupControl4.Controls.Add(this.panel2);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(2, 296);
+            this.groupControl4.Location = new System.Drawing.Point(2, 297);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(317, 83);
+            this.groupControl4.Size = new System.Drawing.Size(317, 82);
             this.groupControl4.TabIndex = 1;
             this.groupControl4.Text = "Thông tin nhân viên được thưởng";
             // 
             // xtraScrollableControl2
             // 
+            this.xtraScrollableControl2.Controls.Add(this.btn_huy2);
+            this.xtraScrollableControl2.Controls.Add(this.btn_luu2);
             this.xtraScrollableControl2.Controls.Add(this.dtp_ngaythuong);
             this.xtraScrollableControl2.Controls.Add(this.cmp_tennv);
             this.xtraScrollableControl2.Controls.Add(this.cmp_mucthuong);
@@ -130,6 +137,26 @@
             this.xtraScrollableControl2.Name = "xtraScrollableControl2";
             this.xtraScrollableControl2.Size = new System.Drawing.Size(313, 0);
             this.xtraScrollableControl2.TabIndex = 2;
+            // 
+            // btn_huy2
+            // 
+            this.btn_huy2.Image = ((System.Drawing.Image)(resources.GetObject("btn_huy2.Image")));
+            this.btn_huy2.Location = new System.Drawing.Point(183, 160);
+            this.btn_huy2.Name = "btn_huy2";
+            this.btn_huy2.Size = new System.Drawing.Size(86, 46);
+            this.btn_huy2.TabIndex = 15;
+            this.btn_huy2.Text = "Hủy bỏ";
+            this.btn_huy2.Click += new System.EventHandler(this.btn_huy2_Click);
+            // 
+            // btn_luu2
+            // 
+            this.btn_luu2.Image = ((System.Drawing.Image)(resources.GetObject("btn_luu2.Image")));
+            this.btn_luu2.Location = new System.Drawing.Point(71, 160);
+            this.btn_luu2.Name = "btn_luu2";
+            this.btn_luu2.Size = new System.Drawing.Size(90, 46);
+            this.btn_luu2.TabIndex = 14;
+            this.btn_luu2.Text = "Lưu lại";
+            this.btn_luu2.Click += new System.EventHandler(this.btn_luu2_Click);
             // 
             // dtp_ngaythuong
             // 
@@ -247,7 +274,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(2, 20);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(317, 276);
+            this.groupControl3.Size = new System.Drawing.Size(317, 277);
             this.groupControl3.TabIndex = 0;
             this.groupControl3.Text = "Thông tin mức thưởng";
             // 
@@ -264,7 +291,7 @@
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(2, 84);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(313, 190);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(313, 191);
             this.xtraScrollableControl1.TabIndex = 1;
             // 
             // btn_huy
@@ -394,9 +421,9 @@
             // 
             this.groupControl6.Controls.Add(this.grid_nhanvien);
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl6.Location = new System.Drawing.Point(2, 251);
+            this.groupControl6.Location = new System.Drawing.Point(2, 296);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(587, 128);
+            this.groupControl6.Size = new System.Drawing.Size(587, 83);
             this.groupControl6.TabIndex = 1;
             this.groupControl6.Text = "Danh sách nhân viên được thưởng";
             // 
@@ -406,7 +433,7 @@
             this.grid_nhanvien.Location = new System.Drawing.Point(2, 20);
             this.grid_nhanvien.MainView = this.grv_nhanvien;
             this.grid_nhanvien.Name = "grid_nhanvien";
-            this.grid_nhanvien.Size = new System.Drawing.Size(583, 106);
+            this.grid_nhanvien.Size = new System.Drawing.Size(583, 61);
             this.grid_nhanvien.TabIndex = 1;
             this.grid_nhanvien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grv_nhanvien});
@@ -421,13 +448,33 @@
             // 
             // groupControl5
             // 
+            this.groupControl5.Controls.Add(this.txt_timkiem);
+            this.groupControl5.Controls.Add(this.labelControl8);
             this.groupControl5.Controls.Add(this.grid_thuong);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl5.Location = new System.Drawing.Point(2, 20);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(587, 231);
+            this.groupControl5.Size = new System.Drawing.Size(587, 276);
             this.groupControl5.TabIndex = 0;
             this.groupControl5.Text = "Các loại mức thưởng";
+            // 
+            // txt_timkiem
+            // 
+            this.txt_timkiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_timkiem.Location = new System.Drawing.Point(378, 28);
+            this.txt_timkiem.Name = "txt_timkiem";
+            this.txt_timkiem.Size = new System.Drawing.Size(194, 20);
+            this.txt_timkiem.TabIndex = 6;
+            this.txt_timkiem.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl8.Location = new System.Drawing.Point(324, 30);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(40, 13);
+            this.labelControl8.TabIndex = 5;
+            this.labelControl8.Text = "Tìm kiếm";
             // 
             // grid_thuong
             // 
@@ -435,7 +482,7 @@
             this.grid_thuong.Location = new System.Drawing.Point(2, 20);
             this.grid_thuong.MainView = this.grv_thuong;
             this.grid_thuong.Name = "grid_thuong";
-            this.grid_thuong.Size = new System.Drawing.Size(583, 209);
+            this.grid_thuong.Size = new System.Drawing.Size(583, 254);
             this.grid_thuong.TabIndex = 0;
             this.grid_thuong.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grv_thuong});
@@ -485,6 +532,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grv_nhanvien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
+            this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_timkiem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_thuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grv_thuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errGiatri)).EndInit();
@@ -531,5 +580,9 @@
         private System.Windows.Forms.ComboBox cmp_tennv;
         private System.Windows.Forms.DateTimePicker dtp_ngaythuong;
         private System.Windows.Forms.ErrorProvider errGiatri;
+        private DevExpress.XtraEditors.SimpleButton btn_huy2;
+        private DevExpress.XtraEditors.SimpleButton btn_luu2;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit txt_timkiem;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using PMQL_Luong.Entities;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace PMQL_Luong.UserControl
 {
@@ -39,6 +40,7 @@ namespace PMQL_Luong.UserControl
 
             loadchucvu();
         }
+
         private List<string> Getdanhsachchucvu(string sql)
         {
             List<string> dsma = new List<string>();
@@ -57,6 +59,7 @@ namespace PMQL_Luong.UserControl
             }
             return dsma;
         }
+
         private bool KiemTraQuyenTruyCap()
         {
             bool check = false;
@@ -73,6 +76,7 @@ namespace PMQL_Luong.UserControl
             }
             return check;
         }
+
         private string TaoMaChucvu()
         {
             List<string> dsma = Getdanhsachchucvu("select machucvu from chucvu order by machucvu");
@@ -92,6 +96,7 @@ namespace PMQL_Luong.UserControl
             else ma = "CV" + ma;
             return ma;
         }
+
         private List<string> Getdanhsachnhanvien(string manhanvien)
         {
             List<string> ls = new List<string>();
@@ -110,6 +115,7 @@ namespace PMQL_Luong.UserControl
             }
             return ls;
         }
+
         void loadchucvu()
         {
             SqlCommand command = new SqlCommand(@"select * from chucvu", StrConn);
@@ -229,6 +235,48 @@ namespace PMQL_Luong.UserControl
                     XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void TaoSTT_GridView(GridView grv, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (!grv.IsGroupRow(e.RowHandle)) //Nếu không phải là Group
+            {
+                if (e.Info.IsRowIndicator) //Nếu là dòng Indicator
+                {
+                    if (e.RowHandle < 0)
+                    {
+                        e.Info.ImageIndex = 0;
+                        e.Info.DisplayText = string.Empty;
+                    }
+                    else
+                    {
+                        e.Info.ImageIndex = -1; //Không hiển thị hình
+                        e.Info.DisplayText = (e.RowHandle + 1).ToString(); //Số thứ tự tăng dần
+                    }
+                    SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); //Lấy kích thước của vùng hiển thị Text
+                    Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                    BeginInvoke(new MethodInvoker(delegate { cal(_Width, grv); })); //Tăng kích thước nếu Text vượt quá
+                }
+            }
+            else
+            {
+                e.Info.ImageIndex = -1;
+                e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); //Nhân -1 để đánh lại số thứ tự tăng dần
+                SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
+                Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                BeginInvoke(new MethodInvoker(delegate { cal(_Width, grv); }));
+            }
+        }
+
+        private bool cal(Int32 _Width, GridView _View)
+        {
+            _View.IndicatorWidth = _View.IndicatorWidth < _Width ? _Width : _View.IndicatorWidth;
+            return true;
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            TaoSTT_GridView(gridView1, e);
         }
     }
 }

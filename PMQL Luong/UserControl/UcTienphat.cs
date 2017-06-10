@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using PMQL_Luong.Entities;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace PMQL_Luong.UserControl
 {
@@ -39,6 +40,7 @@ namespace PMQL_Luong.UserControl
             loadcbnNhanvien2();
             loadcbntienphat();
         }
+
         void loadmucphat()
         {
             SqlCommand com = new SqlCommand(@"select* from tienphat", StrCnn);
@@ -70,6 +72,7 @@ namespace PMQL_Luong.UserControl
             gridView2.Columns["nvghi"].Caption = "Người ghi";
 
         }
+
         void loadcbntienphat()
         {
             SqlCommand com = new SqlCommand(@"select* from tienphat", StrCnn);
@@ -93,6 +96,7 @@ namespace PMQL_Luong.UserControl
             cbntenngbiphat.ValueMember = "manhanvien";
             cbntenngbiphat.SelectedIndex = -1;
         }
+
         private bool KiemTraQuyenTruyCap()
         {
             bool check = false;
@@ -109,6 +113,7 @@ namespace PMQL_Luong.UserControl
             }
             return check;
         }
+
         public string tentaikhoan()
         {
             SqlCommand com = new SqlCommand(@"select tennhanvien from nhanvien where manhanvien=@ma", StrCnn);
@@ -121,6 +126,7 @@ namespace PMQL_Luong.UserControl
             string ten = dr["tennhanvien"].ToString();
             return ten;
         }
+
         private List<string> Getdanhsachnhanvien(string manhanvien)
         {
             List<string> ls = new List<string>();
@@ -139,6 +145,7 @@ namespace PMQL_Luong.UserControl
             }
             return ls;
         }
+
         private string TaoMaphat()
         {
             List<string> dsma = Getdanhsachphat("select maphat from tienphat order by maphat");
@@ -158,6 +165,7 @@ namespace PMQL_Luong.UserControl
             else ma = "MP" + ma;
             return ma;
         }
+
         private List<string> Getdanhsachphat(string sql)
         {
             List<string> dsma = new List<string>();
@@ -206,7 +214,7 @@ namespace PMQL_Luong.UserControl
                     com.Parameters.Add(new SqlParameter("@maphat", cbntenmuc.SelectedValue));
                     com.Parameters.Add(new SqlParameter("@ngay", dateTimePicker1.Value));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn sửa thành công!");
+                    XtraMessageBox.Show("Bạn sửa thành công!");
                     loadtienphat();
                 }
                 catch
@@ -232,7 +240,7 @@ namespace PMQL_Luong.UserControl
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.Add(new SqlParameter("@machitiet", ma));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn xóa thành công!");
+                    XtraMessageBox.Show("Bạn xóa thành công!");
                     loadtienphat();
                 }
                 catch
@@ -275,7 +283,7 @@ namespace PMQL_Luong.UserControl
                     com.Parameters.Add(new SqlParameter("@tenmucphat", txtten.Text));
                     com.Parameters.Add(new SqlParameter("@giatri", txtgiatri.Text));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn thêm thành công!");
+                    XtraMessageBox.Show("Bạn thêm thành công!");
                     loadmucphat();
                 }
                 catch
@@ -307,7 +315,7 @@ namespace PMQL_Luong.UserControl
                 com.Parameters.Add(new SqlParameter("@ngay", dateTimePicker1.Value));
                 com.Parameters.Add(new SqlParameter("@nguoighi", nd.Id));
                 com.ExecuteNonQuery();
-                MessageBox.Show("Bạn thêm thành công!");
+                XtraMessageBox.Show("Bạn thêm thành công!");
                 loadtienphat();
                 }
                 catch
@@ -337,7 +345,7 @@ namespace PMQL_Luong.UserControl
                     com.Parameters.Add(new SqlParameter("@tenmucphat", txtten.Text));
                     com.Parameters.Add(new SqlParameter("@giatri", txtgiatri.Text));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn sửa thành công!");
+                    XtraMessageBox.Show("Bạn sửa thành công!");
                     loadmucphat();
                 }
                 catch
@@ -374,7 +382,7 @@ namespace PMQL_Luong.UserControl
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.Add(new SqlParameter("@mamucphat", ma));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn xóa thành công!");
+                    XtraMessageBox.Show("Bạn xóa thành công!");
                     loadmucphat();
                 }
                 catch
@@ -383,6 +391,7 @@ namespace PMQL_Luong.UserControl
                 }
             }
         }
+
         private void txtgiatri_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -391,6 +400,67 @@ namespace PMQL_Luong.UserControl
                 errorProvider1.SetError(txtgiatri, "Không được nhập chữ");
                 e.Handled = true;
             }
+        }
+
+        private void TaoSTT_GridView(GridView grv, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (!grv.IsGroupRow(e.RowHandle)) //Nếu không phải là Group
+            {
+                if (e.Info.IsRowIndicator) //Nếu là dòng Indicator
+                {
+                    if (e.RowHandle < 0)
+                    {
+                        e.Info.ImageIndex = 0;
+                        e.Info.DisplayText = string.Empty;
+                    }
+                    else
+                    {
+                        e.Info.ImageIndex = -1; //Không hiển thị hình
+                        e.Info.DisplayText = (e.RowHandle + 1).ToString(); //Số thứ tự tăng dần
+                    }
+                    SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); //Lấy kích thước của vùng hiển thị Text
+                    Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                    BeginInvoke(new MethodInvoker(delegate { cal(_Width, grv); })); //Tăng kích thước nếu Text vượt quá
+                }
+            }
+            else
+            {
+                e.Info.ImageIndex = -1;
+                e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); //Nhân -1 để đánh lại số thứ tự tăng dần
+                SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
+                Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                BeginInvoke(new MethodInvoker(delegate { cal(_Width, grv); }));
+            }
+        }
+
+        private bool cal(Int32 _Width, GridView _View)
+        {
+            _View.IndicatorWidth = _View.IndicatorWidth < _Width ? _Width : _View.IndicatorWidth;
+            return true;
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            TaoSTT_GridView(gridView1, e);
+        }
+
+        private void gridView2_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            TaoSTT_GridView(gridView2, e);
+        }
+
+        private void txt_timkiem_EditValueChanged(object sender, EventArgs e)
+        {
+            SqlCommand com = new SqlCommand("SP_TimKiemTienPhat", StrCnn);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.Add(new SqlParameter("@timkiem", txt_timkiem.Text));
+            SqlDataAdapter dt = new SqlDataAdapter(com);
+            DataTable tb = new DataTable();
+            dt.Fill(tb);
+            gcmucphat.DataSource = tb;
+            gridView1.Columns["maphat"].Caption = "Mã mức phạt";
+            gridView1.Columns["tenmucphat"].Caption = "Tên mức phạt";
+            gridView1.Columns["giatri"].Caption = "Giá trị";
         }
     }
 }

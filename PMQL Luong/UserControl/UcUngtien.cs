@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using PMQL_Luong.Entities;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace PMQL_Luong.UserControl
 {
@@ -149,7 +150,7 @@ namespace PMQL_Luong.UserControl
                     com.Parameters.Add(new SqlParameter("@ngaynhan", dateTimePicker2.Value));
                     com.Parameters.Add(new SqlParameter("@giatri", tienung(manhanvien).ToString()));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn sửa thành công!");
+                    XtraMessageBox.Show("Bạn sửa thành công!");
                     loaddanhsach();
                     button1.Enabled = true;
                     button2.Enabled = true;
@@ -180,7 +181,7 @@ namespace PMQL_Luong.UserControl
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.Add(new SqlParameter("@ma", ma));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn xóa thành công!");
+                    XtraMessageBox.Show("Bạn xóa thành công!");
                     loaddanhsach();
                     button1.Enabled = true;
                     button3.Enabled = true;
@@ -217,7 +218,7 @@ namespace PMQL_Luong.UserControl
                     com.Parameters.Add(new SqlParameter("@ngaynhan", dateTimePicker2.Value));
                     com.Parameters.Add(new SqlParameter("@giatri", textBox1.Text));
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Bạn thêm thành công!");
+                    XtraMessageBox.Show("Bạn thêm thành công!");
                     loaddanhsach();
                     button2.Enabled = true;
                     button3.Enabled = true;
@@ -255,6 +256,46 @@ namespace PMQL_Luong.UserControl
             }
         }
 
-       
+        private void TaoSTT_GridView(GridView grv, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (!grv.IsGroupRow(e.RowHandle)) //Nếu không phải là Group
+            {
+                if (e.Info.IsRowIndicator) //Nếu là dòng Indicator
+                {
+                    if (e.RowHandle < 0)
+                    {
+                        e.Info.ImageIndex = 0;
+                        e.Info.DisplayText = string.Empty;
+                    }
+                    else
+                    {
+                        e.Info.ImageIndex = -1; //Không hiển thị hình
+                        e.Info.DisplayText = (e.RowHandle + 1).ToString(); //Số thứ tự tăng dần
+                    }
+                    SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); //Lấy kích thước của vùng hiển thị Text
+                    Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                    BeginInvoke(new MethodInvoker(delegate { cal(_Width, grv); })); //Tăng kích thước nếu Text vượt quá
+                }
+            }
+            else
+            {
+                e.Info.ImageIndex = -1;
+                e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); //Nhân -1 để đánh lại số thứ tự tăng dần
+                SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
+                Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                BeginInvoke(new MethodInvoker(delegate { cal(_Width, grv); }));
+            }
+        }
+
+        private bool cal(Int32 _Width, GridView _View)
+        {
+            _View.IndicatorWidth = _View.IndicatorWidth < _Width ? _Width : _View.IndicatorWidth;
+            return true;
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            TaoSTT_GridView(gridView1, e);
+        }
     }
 }

@@ -39,6 +39,9 @@
             this.btn_Sua = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Xoa = new DevExpress.XtraBars.BarButtonItem();
             this.gcNhap = new DevExpress.XtraEditors.GroupControl();
+            this.txtMota = new DevExpress.XtraEditors.TextEdit();
+            this.txtTenChucVu = new DevExpress.XtraEditors.TextEdit();
+            this.txtChucvu = new DevExpress.XtraEditors.TextEdit();
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -49,19 +52,16 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.txtChucvu = new DevExpress.XtraEditors.TextEdit();
-            this.txtTenChucVu = new DevExpress.XtraEditors.TextEdit();
-            this.txtMota = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcNhap)).BeginInit();
             this.gcNhap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMota.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenChucVu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChucvu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChucvu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenChucVu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMota.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -138,6 +138,28 @@
             this.gcNhap.Size = new System.Drawing.Size(290, 506);
             this.gcNhap.TabIndex = 5;
             this.gcNhap.Text = "Thông tin chức vụ";
+            // 
+            // txtMota
+            // 
+            this.txtMota.Location = new System.Drawing.Point(91, 223);
+            this.txtMota.Name = "txtMota";
+            this.txtMota.Size = new System.Drawing.Size(176, 20);
+            this.txtMota.TabIndex = 6;
+            // 
+            // txtTenChucVu
+            // 
+            this.txtTenChucVu.Location = new System.Drawing.Point(91, 179);
+            this.txtTenChucVu.Name = "txtTenChucVu";
+            this.txtTenChucVu.Size = new System.Drawing.Size(176, 20);
+            this.txtTenChucVu.TabIndex = 6;
+            // 
+            // txtChucvu
+            // 
+            this.txtChucvu.Location = new System.Drawing.Point(91, 137);
+            this.txtChucvu.MenuManager = this.barManager1;
+            this.txtChucvu.Name = "txtChucvu";
+            this.txtChucvu.Size = new System.Drawing.Size(176, 20);
+            this.txtChucvu.TabIndex = 6;
             // 
             // button1
             // 
@@ -238,28 +260,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
-            // 
-            // txtChucvu
-            // 
-            this.txtChucvu.Location = new System.Drawing.Point(91, 137);
-            this.txtChucvu.MenuManager = this.barManager1;
-            this.txtChucvu.Name = "txtChucvu";
-            this.txtChucvu.Size = new System.Drawing.Size(176, 20);
-            this.txtChucvu.TabIndex = 6;
-            // 
-            // txtTenChucVu
-            // 
-            this.txtTenChucVu.Location = new System.Drawing.Point(91, 179);
-            this.txtTenChucVu.Name = "txtTenChucVu";
-            this.txtTenChucVu.Size = new System.Drawing.Size(176, 20);
-            this.txtTenChucVu.TabIndex = 6;
-            // 
-            // txtMota
-            // 
-            this.txtMota.Location = new System.Drawing.Point(91, 223);
-            this.txtMota.Name = "txtMota";
-            this.txtMota.Size = new System.Drawing.Size(176, 20);
-            this.txtMota.TabIndex = 6;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
             // UcChucVu
             // 
@@ -277,13 +278,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcNhap)).EndInit();
             this.gcNhap.ResumeLayout(false);
             this.gcNhap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMota.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenChucVu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChucvu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChucvu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenChucVu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMota.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

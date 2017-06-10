@@ -95,7 +95,6 @@
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(366, 282);
             this.groupControl4.TabIndex = 2;
-            this.groupControl4.Text = "groupControl4";
             // 
             // xtraScrollableControl2
             // 

@@ -61,6 +61,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_timkiem = new DevExpress.XtraEditors.TextEdit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcmucphat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -74,10 +76,13 @@
             this.gbNguoiphat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtnguoighi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_timkiem.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txt_timkiem);
+            this.groupBox1.Controls.Add(this.labelControl1);
             this.groupBox1.Controls.Add(this.gcmucphat);
             this.groupBox1.Controls.Add(this.gBmucphat);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -105,6 +110,7 @@
             this.gridView1.GridControl = this.gcmucphat;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
             // gBmucphat
             // 
@@ -245,6 +251,7 @@
             this.gridView2.GridControl = this.gctienphat;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            this.gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView2_CustomDrawRowIndicator);
             // 
             // gbNguoiphat
             // 
@@ -383,6 +390,24 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl1.Location = new System.Drawing.Point(585, 27);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(40, 13);
+            this.labelControl1.TabIndex = 3;
+            this.labelControl1.Text = "Tìm kiếm";
+            // 
+            // txt_timkiem
+            // 
+            this.txt_timkiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_timkiem.Location = new System.Drawing.Point(646, 24);
+            this.txt_timkiem.Name = "txt_timkiem";
+            this.txt_timkiem.Size = new System.Drawing.Size(200, 20);
+            this.txt_timkiem.TabIndex = 4;
+            this.txt_timkiem.EditValueChanged += new System.EventHandler(this.txt_timkiem_EditValueChanged);
+            // 
             // UcTienphat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,6 +417,7 @@
             this.Name = "UcTienphat";
             this.Size = new System.Drawing.Size(859, 500);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcmucphat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.gBmucphat.ResumeLayout(false);
@@ -406,6 +432,7 @@
             this.gbNguoiphat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtnguoighi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_timkiem.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -443,5 +470,7 @@
         private DevExpress.XtraEditors.TextEdit txtnguoighi;
         private DevExpress.XtraEditors.TextEdit txtgiatri;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevExpress.XtraEditors.TextEdit txt_timkiem;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
