@@ -303,7 +303,7 @@
             // BottomMargin
             // 
             this.BottomMargin.Dpi = 100F;
-            this.BottomMargin.HeightF = 52.29161F;
+            this.BottomMargin.HeightF = 141.4583F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -314,7 +314,7 @@
             this.Detail,
             this.TopMargin,
             this.BottomMargin});
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 118, 52);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 118, 141);
             this.Version = "16.1";
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

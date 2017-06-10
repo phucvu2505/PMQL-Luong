@@ -11,6 +11,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Data.SqlClient;
 using PMQL_Luong.Entities;
+using System.Drawing.Printing;
+using System.Text.RegularExpressions;
 
 namespace PMQL_Luong.UserControl
 {
@@ -19,6 +21,9 @@ namespace PMQL_Luong.UserControl
         private SqlConnection strConnect;
         private List<NhanVien> listNV;
         private string manv = "";
+        private int nam = 0;
+        private int thang = 0;        
+        private DataTable table;
 
         public UcThongKeLuong(SqlConnection strConnect)
         {
@@ -28,6 +33,7 @@ namespace PMQL_Luong.UserControl
 
         private void UcThongKeLuong_Load(object sender, EventArgs e)
         {
+            TinhNgayThang();
             Load_PhongBan_cmb();
             Load_ChucVu_cmb();
             Load_ThongTin_NhanVien();
@@ -85,6 +91,29 @@ namespace PMQL_Luong.UserControl
             TaoSTT_GridView(grv_TienPhat, e);
         }
 
+        private void TinhNgayThang()
+        {
+            try
+            {
+                string temp = dtp_NgayThang.Value.ToShortDateString();
+                string[] A = temp.Split('/');
+                thang = int.Parse(A[0]);
+                nam = int.Parse(A[2]);
+                if (thang != 0 && nam != 0)
+                {
+                    lbl_NgayThang.Text = "Tháng " + thang + " năm " + nam;
+                }
+                else
+                {
+                    lbl_NgayThang.Text = "";
+                }
+            }
+            catch
+            {
+                XtraMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void Load_ThongTin_NhanVien()
         {
             listNV = new List<NhanVien>();
@@ -117,7 +146,7 @@ namespace PMQL_Luong.UserControl
                     listNV.Add(objNhanVien);
                 }
 
-        }
+            }
             catch
             {
                 XtraMessageBox.Show("Thông tin tìm kiếm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -128,8 +157,10 @@ namespace PMQL_Luong.UserControl
                 SqlCommand comm = new SqlCommand("SP_TinhTienThuong", strConnect);
                 comm.CommandType = CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@manv", listNV[i].manv));
+                comm.Parameters.Add(new SqlParameter("@thang", thang));
+                comm.Parameters.Add(new SqlParameter("@nam", nam));
                 SqlDataAdapter da = new SqlDataAdapter(comm);
-                DataTable dtp = new DataTable();
+                System.Data.DataTable dtp = new DataTable();
                 da.Fill(dtp);
 
                 object[] objList;
@@ -150,8 +181,10 @@ namespace PMQL_Luong.UserControl
                 SqlCommand comm1 = new SqlCommand("SP_TinhTienPhat", strConnect);
                 comm1.CommandType = CommandType.StoredProcedure;
                 comm1.Parameters.Add(new SqlParameter("@manv", listNV[i].manv));
+                comm1.Parameters.Add(new SqlParameter("@thang", thang));
+                comm1.Parameters.Add(new SqlParameter("@nam", nam));
                 SqlDataAdapter da1 = new SqlDataAdapter(comm1);
-                DataTable dt1 = new DataTable();
+                System.Data.DataTable dt1 = new DataTable();
                 da1.Fill(dt1);
 
                 object[] objList1;
@@ -167,7 +200,7 @@ namespace PMQL_Luong.UserControl
                 }
             }
 
-            for(int i = 0; i < listNV.Count; i++)
+            for (int i = 0; i < listNV.Count; i++)
             {
                 listNV[i].tongtien = listNV[i].luongthang + listNV[i].tienthuong - listNV[i].tienphat;
             }
@@ -183,7 +216,7 @@ namespace PMQL_Luong.UserControl
             dt.Columns.Add("Tiền phạt");
             dt.Columns.Add("Tổng tiền");
 
-            for(int i = 0; i < listNV.Count; i++)
+            for (int i = 0; i < listNV.Count; i++)
             {
                 DataRow dtRow = dt.NewRow();
                 dtRow[0] = listNV[i].manv;
@@ -197,6 +230,7 @@ namespace PMQL_Luong.UserControl
                 dtRow[8] = listNV[i].tongtien.ToString("#,###");
                 dt.Rows.Add(dtRow);
             }
+            table = dt;
 
             grc_DSnhanvien.DataSource = dt;
             grv_DSnhanvien.Columns["Mã nhân viên"].BestFit();
@@ -204,10 +238,10 @@ namespace PMQL_Luong.UserControl
             grv_DSnhanvien.Columns["Trình độ"].BestFit();
             grv_DSnhanvien.Columns["Phòng ban"].BestFit();
             grv_DSnhanvien.Columns["Chức vụ"].BestFit();
-            grv_DSnhanvien.Columns["Lương nhân viên"].BestFit();
-            grv_DSnhanvien.Columns["Tiền thưởng"].BestFit();
-            grv_DSnhanvien.Columns["Tiền phạt"].BestFit();
-            grv_DSnhanvien.Columns["Tổng tiền"].BestFit();
+            grv_DSnhanvien.Columns["Lương nhân viên (VNĐ)"].BestFit();
+            grv_DSnhanvien.Columns["Tiền thưởng (VNĐ)"].BestFit();
+            grv_DSnhanvien.Columns["Tiền phạt (VNĐ)"].BestFit();
+            grv_DSnhanvien.Columns["Tổng tiền (VNĐ)"].BestFit();
         }
 
         private void Load_PhongBan_cmb()
@@ -261,19 +295,19 @@ namespace PMQL_Luong.UserControl
 
         private void grv_DSnhanvien_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 panel_ChiTiet.Visible = true;
                 manv = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "Mã nhân viên").ToString();
                 lbl_MaNV.Text = manv;
                 lbl_TenNV.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "Tên nhân viên").ToString();
                 Load_ChiTietPhat();
                 Load_ChiTietThuong();
-            //}
-            //catch
-            //{
-            //    XtraMessageBox.Show("Không có nhân viên nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch
+            {
+                XtraMessageBox.Show("Không có nhân viên nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_Tat_Click(object sender, EventArgs e)
@@ -286,6 +320,8 @@ namespace PMQL_Luong.UserControl
             SqlCommand comm = new SqlCommand("SP_HienThiChiTietTienPhat", strConnect);
             comm.CommandType = CommandType.StoredProcedure;
             comm.Parameters.Add(new SqlParameter("@manv", manv));
+            comm.Parameters.Add(new SqlParameter("@thang", thang));
+            comm.Parameters.Add(new SqlParameter("@nam", nam));
             SqlDataAdapter da = new SqlDataAdapter(comm);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -303,6 +339,8 @@ namespace PMQL_Luong.UserControl
         {
             SqlCommand comm = new SqlCommand("SP_HienThiChiTietTienThuong", strConnect);
             comm.Parameters.Add(new SqlParameter("@manv", manv));
+            comm.Parameters.Add(new SqlParameter("@thang", thang));
+            comm.Parameters.Add(new SqlParameter("@nam", nam));
             comm.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -314,6 +352,50 @@ namespace PMQL_Luong.UserControl
             grv_TienThuong.Columns["ngay"].Caption = "Ngày bị phạt";
             grv_TienThuong.Columns["mota"].Caption = "Nguyên nhân";
             grv_TienThuong.Columns["giatri"].Caption = "Tiền thuong";
+        }
+
+        private void dtp_NgayThang_ValueChanged(object sender, EventArgs e)
+        {
+            TinhNgayThang();
+            Load_ThongTin_NhanVien();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Load_ThongTin_NhanVien();
+        }
+
+        private void btn_InBangLuong_Click(object sender, EventArgs e)
+        {
+            //save.InitialDirectory = "C:";
+            save.Title = "Lưu ra file Excel";
+            save.FileName = "";
+            save.Filter = "Excel File(2013)|*.xlsx|Excel File(2007)|*.xls";
+            if(save.ShowDialog() != DialogResult.Cancel)
+            {
+                Microsoft.Office.Interop.Excel.Application ExceApp = new Microsoft.Office.Interop.Excel.Application();
+                ExceApp.Application.Workbooks.Add(Type.Missing);
+
+                ExceApp.Columns.ColumnWidth = 25;
+
+                for(int i = 1;i<grv_DSnhanvien.Columns.Count + 1;i++)
+                {
+                    ExceApp.Cells[1, i] = grv_DSnhanvien.Columns[i - 1].GetTextCaption();
+                }
+
+                for(int i = 0; i < grv_DSnhanvien.RowCount; i++)
+                {
+                    for(int j = 0;j<grv_DSnhanvien.Columns.Count;j++)
+                    {
+                        ExceApp.Cells[i + 2, j + 1] = table.Rows[i][j];
+                    }
+                }
+                ExceApp.ActiveWorkbook.SaveCopyAs(save.FileName.ToString());
+                ExceApp.ActiveWorkbook.Saved = true;
+                ExceApp.Quit();
+                XtraMessageBox.Show("In bảng lương thành công", "Thông báo", MessageBoxButtons.OK);          
+            }
+
         }
     }
 }

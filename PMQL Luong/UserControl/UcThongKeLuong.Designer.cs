@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcThongKeLuong));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.btn_TimKiem = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.dtp_NgayThang = new System.Windows.Forms.DateTimePicker();
             this.cmb_PhongBan = new System.Windows.Forms.ComboBox();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.cmb_ChucVu = new System.Windows.Forms.ComboBox();
@@ -44,6 +47,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btn_InBangLuong = new DevExpress.XtraEditors.SimpleButton();
             this.grc_DSnhanvien = new DevExpress.XtraGrid.GridControl();
             this.grv_DSnhanvien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel_ChiTiet = new DevExpress.XtraEditors.PanelControl();
@@ -55,11 +59,13 @@
             this.grc_TienPhat = new DevExpress.XtraGrid.GridControl();
             this.grv_TienPhat = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.lbl_NgayThang = new DevExpress.XtraEditors.LabelControl();
             this.btn_Tat = new DevExpress.XtraEditors.SimpleButton();
             this.lbl_TenNV = new DevExpress.XtraEditors.LabelControl();
             this.lbl_MaNV = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.save = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -99,6 +105,9 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.btn_TimKiem);
+            this.groupControl2.Controls.Add(this.labelControl5);
+            this.groupControl2.Controls.Add(this.dtp_NgayThang);
             this.groupControl2.Controls.Add(this.cmb_PhongBan);
             this.groupControl2.Controls.Add(this.labelControl11);
             this.groupControl2.Controls.Add(this.cmb_ChucVu);
@@ -115,6 +124,32 @@
             this.groupControl2.Size = new System.Drawing.Size(320, 408);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Thông tin thống kê";
+            // 
+            // btn_TimKiem
+            // 
+            this.btn_TimKiem.Image = ((System.Drawing.Image)(resources.GetObject("btn_TimKiem.Image")));
+            this.btn_TimKiem.Location = new System.Drawing.Point(139, 357);
+            this.btn_TimKiem.Name = "btn_TimKiem";
+            this.btn_TimKiem.Size = new System.Drawing.Size(99, 40);
+            this.btn_TimKiem.TabIndex = 33;
+            this.btn_TimKiem.Text = "Tìm kiếm";
+            this.btn_TimKiem.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(9, 313);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(43, 13);
+            this.labelControl5.TabIndex = 32;
+            this.labelControl5.Text = "Thời gian";
+            // 
+            // dtp_NgayThang
+            // 
+            this.dtp_NgayThang.Location = new System.Drawing.Point(105, 307);
+            this.dtp_NgayThang.Name = "dtp_NgayThang";
+            this.dtp_NgayThang.Size = new System.Drawing.Size(200, 21);
+            this.dtp_NgayThang.TabIndex = 31;
+            this.dtp_NgayThang.ValueChanged += new System.EventHandler(this.dtp_NgayThang_ValueChanged);
             // 
             // cmb_PhongBan
             // 
@@ -184,7 +219,6 @@
             // 
             // txt_MaNV
             // 
-            this.txt_MaNV.Enabled = false;
             this.txt_MaNV.Location = new System.Drawing.Point(104, 42);
             this.txt_MaNV.Name = "txt_MaNV";
             this.txt_MaNV.Properties.Appearance.BackColor = System.Drawing.Color.White;
@@ -235,6 +269,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.btn_InBangLuong);
             this.groupControl1.Controls.Add(this.grc_DSnhanvien);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(2, 2);
@@ -242,6 +277,17 @@
             this.groupControl1.Size = new System.Drawing.Size(586, 153);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Danh sách nhân viên";
+            // 
+            // btn_InBangLuong
+            // 
+            this.btn_InBangLuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_InBangLuong.Image = ((System.Drawing.Image)(resources.GetObject("btn_InBangLuong.Image")));
+            this.btn_InBangLuong.Location = new System.Drawing.Point(444, 20);
+            this.btn_InBangLuong.Name = "btn_InBangLuong";
+            this.btn_InBangLuong.Size = new System.Drawing.Size(137, 34);
+            this.btn_InBangLuong.TabIndex = 1;
+            this.btn_InBangLuong.Text = "In bảng lương";
+            this.btn_InBangLuong.Click += new System.EventHandler(this.btn_InBangLuong_Click);
             // 
             // grc_DSnhanvien
             // 
@@ -337,6 +383,7 @@
             // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(this.lbl_NgayThang);
             this.panelControl3.Controls.Add(this.btn_Tat);
             this.panelControl3.Controls.Add(this.lbl_TenNV);
             this.panelControl3.Controls.Add(this.lbl_MaNV);
@@ -347,6 +394,13 @@
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(586, 31);
             this.panelControl3.TabIndex = 1;
+            // 
+            // lbl_NgayThang
+            // 
+            this.lbl_NgayThang.Location = new System.Drawing.Point(472, 9);
+            this.lbl_NgayThang.Name = "lbl_NgayThang";
+            this.lbl_NgayThang.Size = new System.Drawing.Size(0, 13);
+            this.lbl_NgayThang.TabIndex = 5;
             // 
             // btn_Tat
             // 
@@ -462,5 +516,11 @@
         private System.Windows.Forms.ComboBox cmb_HocVan;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.SimpleButton btn_TimKiem;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private System.Windows.Forms.DateTimePicker dtp_NgayThang;
+        private DevExpress.XtraEditors.LabelControl lbl_NgayThang;
+        private DevExpress.XtraEditors.SimpleButton btn_InBangLuong;
+        private System.Windows.Forms.SaveFileDialog save;
     }
 }

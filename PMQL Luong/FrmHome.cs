@@ -310,18 +310,17 @@ namespace PMQL_Luong
 
         private void btnTimKiemLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //if (!xtraTabMain.TabPages.Contains(xtraTimKiemLuong))
-            //{
-            //    xtraTimKiemLuong = new XtraTabPage();
-            //    ucTimkiemluong = new UcTimKiemLuong(strConnect);
-            //    xtraTimKiemLuong.Controls.Add(ucTimkiemluong);
-            //    xtraTabMain.TabPages.Add(xtraTimKiemLuong);
+            if (!xtraTabMain.TabPages.Contains(xtraTimKiemLuong))
+            {
+                xtraTimKiemLuong = new XtraTabPage();
+                ucTimkiemluong = new UcTimKiemLuong(strConnect);
+                xtraTimKiemLuong.Controls.Add(ucTimkiemluong);
+                xtraTabMain.TabPages.Add(xtraTimKiemLuong);
 
-            //    xtraTimKiemLuong.Text = "Tìm kiếm thông tin lương";
-            //    ucTimkiemluong.Dock = DockStyle.Fill;
-            //}
-            //xtraTabMain.SelectedTabPage = xtraTimKiemLuong;
-            XtraMessageBox.Show("Hệ thống đang bảo trì", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                xtraTimKiemLuong.Text = "Tìm kiếm thông tin lương";
+                ucTimkiemluong.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraTimKiemLuong;
         }
 
         private void btnDanhSachLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMQL_Luong.Entities
+namespace PMQL_Luong
 {
-    class NhanVien
+    public class NhanVien
     {
         public string manv;
         public string tennv;

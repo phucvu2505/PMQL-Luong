@@ -331,7 +331,7 @@
             this.printPreviewStaticItem2,
             this.zoomTrackBarEditItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 57;
+            this.ribbonControl1.MaxItemId = 60;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -844,6 +844,7 @@
             this.printPreviewBarItem26.Caption = "Close";
             this.printPreviewBarItem26.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ClosePreview;
             this.printPreviewBarItem26.ContextSpecifier = this.documentViewerRibbonController1;
+            this.printPreviewBarItem26.Enabled = false;
             this.printPreviewBarItem26.Glyph = global::PMQL_Luong.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreview;
             this.printPreviewBarItem26.Id = 26;
             this.printPreviewBarItem26.LargeGlyph = global::PMQL_Luong.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreviewLarge;
