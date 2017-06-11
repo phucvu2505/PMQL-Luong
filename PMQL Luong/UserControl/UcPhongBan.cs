@@ -237,6 +237,9 @@ namespace PMQL_Luong.UserControl
                     command.ExecuteNonQuery();
                     XtraMessageBox.Show("Thay đổi thông tin phòng ban thành công", "Thông báo", MessageBoxButtons.OK);
                     loadDataPhongban();
+                    txt_mapb.Text = "";
+                    txt_tenpb.Text = "";
+                    cmp_diadiem.Text = "";
                 }
                 catch
                 {
@@ -259,6 +262,9 @@ namespace PMQL_Luong.UserControl
                     command.ExecuteNonQuery();
                     XtraMessageBox.Show("Đã xóa phòng ban", "Thông báo", MessageBoxButtons.OK);
                     loadDataPhongban();
+                    txt_mapb.Text = "";
+                    txt_tenpb.Text = "";
+                    cmp_diadiem.Text = "";
                 }
                 catch
                 {
@@ -289,6 +295,11 @@ namespace PMQL_Luong.UserControl
                         command.ExecuteNonQuery();
                         XtraMessageBox.Show("Thêm mới phòng ban thành công", "Thông báo", MessageBoxButtons.OK);
                         loadDataPhongban();
+                        txt_mapb.Text = "";
+                        txt_tenpb.Text = "";
+                        cmp_diadiem.Text = "";
+                        btn_luu.Visible = false;
+                        btn_huy.Visible = false;
                     }
                     catch
                     {

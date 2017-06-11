@@ -261,6 +261,10 @@ namespace PMQL_Luong.UserControl
                     command.ExecuteNonQuery();
                     XtraMessageBox.Show("Thay đổi thông tin hệ số lương thành công", "Thông báo", MessageBoxButtons.OK);
                     loadDataHesoluong();
+                    txt_mahs.Text = "";
+                    txt_giatri.Text = "";
+                    txt_mota.Text = "";
+                    txt_nhanvien.Text = "";
                 }
                 catch
                 {
@@ -283,6 +287,10 @@ namespace PMQL_Luong.UserControl
                     command.ExecuteNonQuery();
                     XtraMessageBox.Show("Xóa hệ số thành công", "Thông báo", MessageBoxButtons.OK);
                     loadDataHesoluong();
+                    txt_mahs.Text = "";
+                    txt_giatri.Text = "";
+                    txt_mota.Text = "";
+                    txt_nhanvien.Text = "";
                 }
                 catch
                 {
@@ -314,6 +322,12 @@ namespace PMQL_Luong.UserControl
                         command.ExecuteNonQuery();
                         XtraMessageBox.Show("Thêm hệ số thành công", "Thông báo", MessageBoxButtons.OK);
                         loadDataHesoluong();
+                        txt_mahs.Text = "";
+                        txt_giatri.Text = "";
+                        txt_mota.Text = "";
+                        txt_nhanvien.Text = "";
+                        btn_luu.Visible = false;
+                        btn_huy.Visible = false;
                     }
                     catch
                     {

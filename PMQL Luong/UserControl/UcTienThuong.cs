@@ -327,6 +327,7 @@ namespace PMQL_Luong.UserControl
                     txt_matienthuong.Text = "";
                     txt_mota.Text = "";
                     txt_giatri.Text = "";
+                    loadComboBoxMucthuong();
                 }
                 catch
                 {
@@ -352,6 +353,7 @@ namespace PMQL_Luong.UserControl
                     txt_matienthuong.Text = "";
                     txt_mota.Text = "";
                     txt_giatri.Text = "";
+                    loadComboBoxMucthuong();
                 }
                 catch
                 {
@@ -451,6 +453,7 @@ namespace PMQL_Luong.UserControl
                     txt_giatri.Text = "";
                     btn_luu.Visible = false;
                     btn_huy.Visible = false;
+                    loadComboBoxMucthuong();
                 }
                 catch
                 {
