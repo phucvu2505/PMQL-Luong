@@ -24,6 +24,7 @@ namespace PMQL_Luong.UserControl
         private float ngaylamviec = 0;
         private string chuoi = "";
         private string maheso = "";
+        private float luongcoban = 0;
 
         public UcNhanVien(SqlConnection strConnect, User user)
         {
@@ -52,7 +53,7 @@ namespace PMQL_Luong.UserControl
                 txt_MaNV.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "manhanvien").ToString();
                 txt_TenNV.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "tennhanvien").ToString();
                 txt_SDT.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "SDT").ToString();
-                txt_ThuongTru.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "noio").ToString();                
+                txt_ThuongTru.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "noio").ToString();
                 cmb_ChucVu.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "tenchucvu").ToString();
                 cmb_HocVan.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "trinhdo").ToString();
                 cmb_PhongBan.Text = grv_DSnhanvien.GetRowCellValue(grv_DSnhanvien.FocusedRowHandle, "tenphongban").ToString();
@@ -70,7 +71,7 @@ namespace PMQL_Luong.UserControl
 
             }
         }
-        
+
         private void TaoSTT_GridView(GridView grv, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (!grv.IsGroupRow(e.RowHandle)) //Nếu không phải là Group
@@ -282,6 +283,17 @@ namespace PMQL_Luong.UserControl
             return list;
         }
 
+        private void GetLuongCoBan()
+        {
+            SqlCommand comm = new SqlCommand("select top 1 luongcoban from nhanvien", strConnect);
+            SqlDataAdapter da = new SqlDataAdapter(comm);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Object[] obj;
+            DataRowCollection rowList = dt.Rows;
+            obj = rowList[0].ItemArray;
+            luongcoban = float.Parse(obj[0].ToString());
+        }
         private List<HeSoLuong> GetListHeSoLuong()
         {
             List<HeSoLuong> listHS = new List<HeSoLuong>();
@@ -317,18 +329,19 @@ namespace PMQL_Luong.UserControl
             objHSL.giatri = 0;
             List<HeSoLuong> listHS = GetListHeSoLuong();
 
-            if (ngaylamviec < 730 && ngaylamviec != 0) chuoi = " Dưới 2 năm ";
+            if (ngaylamviec < 730 && ngaylamviec >= 0) chuoi = " Dưới 2 năm ";
             else if (ngaylamviec >= 730 && ngaylamviec < 1460) chuoi = " Từ 2 năm đến 3 năm ";
             else if (ngaylamviec >= 1460 && ngaylamviec < 2190) chuoi = " Từ 4 năm đến 5 năm ";
             else if (ngaylamviec >= 2190 && ngaylamviec < 2920) chuoi = " Từ 6 năm đến 7 năm ";
             else if (ngaylamviec >= 2920) chuoi = " Trên 8 năm ";
-            else chuoi = "";
+            else chuoi = "Sai";
 
             for (int i = 0; i < listHS.Count; i++)
             {
                 if (listHS[i].hocvan == null)
                 {
-                    if (cmb_ChucVu.Text.Equals(listHS[i].chucvu))
+                    if ("Sai".Equals(chuoi)) hesoluong = 0;
+                    else if (cmb_ChucVu.Text.Equals(listHS[i].chucvu))
                     {
                         hesoluong = listHS[i].giatri;
                         maheso = listHS[i].ma;
@@ -352,9 +365,11 @@ namespace PMQL_Luong.UserControl
                     }
                 }
             }
+
             try
             {
-                txt_LuongNV.Text = double.Parse((hesoluong * 5000000).ToString()).ToString("#,###");
+                GetLuongCoBan();
+                txt_LuongNV.Text = double.Parse((hesoluong * luongcoban).ToString()).ToString("#,###");
             }
             catch
             {
@@ -446,7 +461,7 @@ namespace PMQL_Luong.UserControl
             txt_HeSoLuong.Text = "";
         }
 
-        private void ThemNhanVien()
+        private void ThemNhanVien(object sender, EventArgs e)
         {
             int i = 1;
             if (rdio_Nam.Checked == true) i = 1;
@@ -462,6 +477,10 @@ namespace PMQL_Luong.UserControl
             else if ("".Equals(txt_SDT.Text))
             {
                 XtraMessageBox.Show("Bạn chưa điền số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if ("".Equals(txt_LuongNV.Text) || "0".Equals(txt_HeSoLuong.Text))
+            {
+                XtraMessageBox.Show("Ngày vào làm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -485,6 +504,7 @@ namespace PMQL_Luong.UserControl
                         comm.Parameters.Add(new SqlParameter("@heso", txt_HeSoLuong.Text));
                         comm.ExecuteNonQuery();
                         Load_DanhSachNhanVien();
+                        btn_Huy_Click(sender, e);
                         XtraMessageBox.Show("Thêm mới nhân viên thành công", "Thông báo", MessageBoxButtons.OK);
                     }
                     catch
@@ -499,17 +519,15 @@ namespace PMQL_Luong.UserControl
         {
             if (btn_Them.Enabled == true)
             {
-                ThemNhanVien();
+                ThemNhanVien(sender, e);
             }
             else if (btn_CapNhat.Enabled == true)
             {
-                SuaThongTinNhanVien();
+                SuaThongTinNhanVien(sender, e);
             }
-            btn_Huy_Click(sender, e);
-            Load_DanhSachNhanVien();
         }
 
-        private void SuaThongTinNhanVien()
+        private void SuaThongTinNhanVien(object sender, EventArgs e)
         {
             int i = 1;
             if (rdio_Nam.Checked == true) i = 1;
@@ -534,11 +552,12 @@ namespace PMQL_Luong.UserControl
                     comm.Parameters.Add(new SqlParameter("@trinhdo", cmb_HocVan.SelectedItem.ToString()));
                     comm.ExecuteNonQuery();
                     Load_DanhSachNhanVien();
+                    btn_Huy_Click(sender, e);
                     XtraMessageBox.Show("Sửa thông tin nhân viên thành công", "Thông báo", MessageBoxButtons.OK);
                 }
                 catch
                 {
-                    XtraMessageBox.Show("Bạn chưa điền đẩy đủ thông tin nhân viên","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    XtraMessageBox.Show("Bạn chưa điền đẩy đủ thông tin nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -609,7 +628,7 @@ namespace PMQL_Luong.UserControl
                     }
                     catch
                     {
-                        XtraMessageBox.Show("Xóa nhân viên thất bại", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        XtraMessageBox.Show("Xóa nhân viên thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
