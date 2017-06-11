@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDangNhap));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.lbLossPW = new DevExpress.XtraEditors.LabelControl();
@@ -71,9 +72,11 @@
             // 
             // pictureEdit1
             // 
+            this.pictureEdit1.EditValue = global::PMQL_Luong.Properties.Resources.crocs;
             this.pictureEdit1.Location = new System.Drawing.Point(5, 23);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
             this.pictureEdit1.Size = new System.Drawing.Size(170, 222);
             this.pictureEdit1.TabIndex = 8;
@@ -186,6 +189,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 250);
             this.Controls.Add(this.groupControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDangNhap";
             this.Text = "Đăng nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDangNhap_FormClosing);

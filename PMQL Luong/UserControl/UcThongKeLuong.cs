@@ -211,10 +211,10 @@ namespace PMQL_Luong.UserControl
             dt.Columns.Add("Trình độ");
             dt.Columns.Add("Phòng ban");
             dt.Columns.Add("Chức vụ");
-            dt.Columns.Add("Lương nhân viên");
-            dt.Columns.Add("Tiền thưởng");
-            dt.Columns.Add("Tiền phạt");
-            dt.Columns.Add("Tổng tiền");
+            dt.Columns.Add("Lương nhân viên (VNĐ)");
+            dt.Columns.Add("Tiền thưởng (VNĐ)");
+            dt.Columns.Add("Tiền phạt (VNĐ)");
+            dt.Columns.Add("Tổng tiền (VNĐ)");
 
             for (int i = 0; i < listNV.Count; i++)
             {

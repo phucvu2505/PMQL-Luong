@@ -272,9 +272,9 @@
             // 
             // txt_luong
             // 
-            this.txt_luong.Location = new System.Drawing.Point(200, 28);
+            this.txt_luong.Location = new System.Drawing.Point(189, 28);
             this.txt_luong.Name = "txt_luong";
-            this.txt_luong.Size = new System.Drawing.Size(169, 20);
+            this.txt_luong.Size = new System.Drawing.Size(180, 20);
             this.txt_luong.TabIndex = 1;
             this.txt_luong.EditValueChanged += new System.EventHandler(this.txt_luong_EditValueChanged);
             // 

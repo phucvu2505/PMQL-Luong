@@ -31,7 +31,6 @@ namespace PMQL_Luong
         private XtraTabPage xtraTienTamUng;
         private XtraTabPage xtraThongKeNhanVien;
         private XtraTabPage xtraNhanVien;
-        private XtraTabPage xtraTimKiemLuong;
         private XtraTabPage xtraThongKeLuong;
         private UcPhongBan ucPhongban;
         private UcQuanLyTaiKhoan ucQuanlytaikhoan;
@@ -43,7 +42,6 @@ namespace PMQL_Luong
         private UcUngtien ucTientamung;
         private UcThongkeNhanvien ucThongkenhanvien;
         private UcNhanVien ucNhanvien;
-        private UcTimKiemLuong ucTimkiemluong;
         private UcThongKeLuong ucThongKeLuong;
 
         public FrmHome()
@@ -306,21 +304,6 @@ namespace PMQL_Luong
                 ucNhanvien.Dock = DockStyle.Fill;
             }
             xtraTabMain.SelectedTabPage = xtraNhanVien;
-        }
-
-        private void btnTimKiemLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (!xtraTabMain.TabPages.Contains(xtraTimKiemLuong))
-            {
-                xtraTimKiemLuong = new XtraTabPage();
-                ucTimkiemluong = new UcTimKiemLuong(strConnect);
-                xtraTimKiemLuong.Controls.Add(ucTimkiemluong);
-                xtraTabMain.TabPages.Add(xtraTimKiemLuong);
-
-                xtraTimKiemLuong.Text = "Tìm kiếm thông tin lương";
-                ucTimkiemluong.Dock = DockStyle.Fill;
-            }
-            xtraTabMain.SelectedTabPage = xtraTimKiemLuong;
         }
 
         private void btnDanhSachLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
