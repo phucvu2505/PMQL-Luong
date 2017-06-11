@@ -348,6 +348,7 @@ namespace PMQL_Luong.UserControl
 
                 command.ExecuteNonQuery();
                 XtraMessageBox.Show("Thay đổi thông tin lương cơ bản thành công", "Thông báo", MessageBoxButtons.OK);
+                txt_luong.Text = "";
             }
         }
 

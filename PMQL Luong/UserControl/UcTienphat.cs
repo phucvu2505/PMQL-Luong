@@ -451,16 +451,23 @@ namespace PMQL_Luong.UserControl
 
         private void txt_timkiem_EditValueChanged(object sender, EventArgs e)
         {
-            SqlCommand com = new SqlCommand("SP_TimKiemTienPhat", StrCnn);
-            com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.Add(new SqlParameter("@timkiem", txt_timkiem.Text));
-            SqlDataAdapter dt = new SqlDataAdapter(com);
-            DataTable tb = new DataTable();
-            dt.Fill(tb);
-            gcmucphat.DataSource = tb;
-            gridView1.Columns["maphat"].Caption = "Mã mức phạt";
-            gridView1.Columns["tenmucphat"].Caption = "Tên mức phạt";
-            gridView1.Columns["giatri"].Caption = "Giá trị";
+            try
+            {
+                SqlCommand com = new SqlCommand("SP_TimKiemTienPhat", StrCnn);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.Add(new SqlParameter("@timkiem", txt_timkiem.Text));
+                SqlDataAdapter dt = new SqlDataAdapter(com);
+                DataTable tb = new DataTable();
+                dt.Fill(tb);
+                gcmucphat.DataSource = tb;
+                gridView1.Columns["maphat"].Caption = "Mã mức phạt";
+                gridView1.Columns["tenmucphat"].Caption = "Tên mức phạt";
+                gridView1.Columns["giatri"].Caption = "Giá trị";
+            }
+            catch
+            {
+                XtraMessageBox.Show("Rất tiếc, không tìm thấy thông tin cần tìm kiếm. Yêu cầu bạn nhập lại thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

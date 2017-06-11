@@ -168,12 +168,6 @@
     <Compile Include="UserControl\UcTimkiem.designer.cs">
       <DependentUpon>UcTimkiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UcTimKiemLuong.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\UcTimKiemLuong.Designer.cs">
-      <DependentUpon>UcTimKiemLuong.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\UcUngtien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -245,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcTimkiem.resx">
       <DependentUpon>UcTimkiem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\UcTimKiemLuong.resx">
-      <DependentUpon>UcTimKiemLuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcUngtien.resx">
       <DependentUpon>UcUngtien.cs</DependentUpon>
@@ -360,6 +351,18 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gold.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crocs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crocs-_1_.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -87,7 +87,6 @@ namespace PMQL_Luong.UserControl
             grv_phongban.Columns["maphongban"].Caption = "Mã phòng ban";
             grv_phongban.Columns["tenphongban"].Caption = "Tên phòng ban";
             grv_phongban.Columns["diadiem"].Caption = "Địa điểm";
-            grv_phongban.Columns["tennhanvien"].Caption = "Nhân viên";
         }
 
         private void loadDiadiem()
@@ -109,10 +108,8 @@ namespace PMQL_Luong.UserControl
                 txt_mapb.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "maphongban").ToString();
                 txt_tenpb.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "tenphongban").ToString();
                 cmp_diadiem.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "diadiem").ToString();
-                txt_tennv.Text = grv_phongban.GetRowCellValue(grv_phongban.FocusedRowHandle, "tennhanvien").ToString();
 
                 txt_mapb.Enabled = false;
-                txt_tennv.Enabled = false;
 
                 if (!KiemTraQuyenTruyCap())
                 {
@@ -216,7 +213,6 @@ namespace PMQL_Luong.UserControl
             txt_mapb.Text = TaoMaPhongBan();
             txt_tenpb.Text = "";
             cmp_diadiem.Text = "";
-            txt_tennv.Enabled = false;
 
             btn_luu.Visible = true;
             btn_huy.Visible = true;
@@ -307,7 +303,6 @@ namespace PMQL_Luong.UserControl
             if (dialog == DialogResult.Yes)
             {
                 txt_mapb.Text = "";
-                txt_tennv.Text = "";
                 cmp_diadiem.Text = "";
                 txt_tenpb.Text = "";
                 btn_luu.Visible = false;
