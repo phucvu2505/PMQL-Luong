@@ -350,9 +350,9 @@ namespace PMQL_Luong.UserControl
             grc_TienThuong.DataSource = dt;
             grv_TienThuong.Columns["manhanvien"].Caption = "Mã nhân viên";
             grv_TienThuong.Columns["tennhanvien"].Caption = "Tên nhân viên";
-            grv_TienThuong.Columns["ngay"].Caption = "Ngày bị phạt";
-            grv_TienThuong.Columns["mota"].Caption = "Nguyên nhân";
-            grv_TienThuong.Columns["giatri"].Caption = "Tiền thuong";
+            grv_TienThuong.Columns["ngay"].Caption = "Tháng được thưởng";
+            grv_TienThuong.Columns["mota"].Caption = "Thành tích";
+            grv_TienThuong.Columns["giatri"].Caption = "Tiền thưởng";
         }
 
         private void dtp_NgayThang_ValueChanged(object sender, EventArgs e)

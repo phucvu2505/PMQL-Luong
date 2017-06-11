@@ -336,7 +336,7 @@
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(62, 13);
             this.labelControl7.TabIndex = 11;
-            this.labelControl7.Text = "Số diện thoại";
+            this.labelControl7.Text = "Số điện thoại";
             // 
             // labelControl10
             // 
