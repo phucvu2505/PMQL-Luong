@@ -134,6 +134,7 @@
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHelp_ItemClick);
             // 
             // btnNhanVien
             // 
@@ -372,11 +373,13 @@
             this.Controls.Add(this.xtraTabMain);
             this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FrmHome";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Phần mềm quản lý lương nhân sự";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.Shown += new System.EventHandler(this.FrmHome_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmHome_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabMain)).EndInit();
             this.xtraTabMain.ResumeLayout(false);

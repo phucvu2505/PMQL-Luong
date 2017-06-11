@@ -32,6 +32,8 @@ namespace PMQL_Luong
         private XtraTabPage xtraThongKeNhanVien;
         private XtraTabPage xtraNhanVien;
         private XtraTabPage xtraThongKeLuong;
+        private XtraTabPage xtraHuongDan;
+
         private UcPhongBan ucPhongban;
         private UcQuanLyTaiKhoan ucQuanlytaikhoan;
         private UcHeSoLuong ucHesoluong;
@@ -43,6 +45,7 @@ namespace PMQL_Luong
         private UcThongkeNhanvien ucThongkenhanvien;
         private UcNhanVien ucNhanvien;
         private UcThongKeLuong ucThongKeLuong;
+        private UcHuongDan ucHuongdan;
 
         public FrmHome()
         {
@@ -319,6 +322,26 @@ namespace PMQL_Luong
                 ucThongKeLuong.Dock = DockStyle.Fill;
             }
             xtraTabMain.SelectedTabPage = xtraThongKeLuong;
+        }
+
+        private void btnHelp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!xtraTabMain.TabPages.Contains(xtraHuongDan))
+            {
+                xtraHuongDan = new XtraTabPage();
+                ucHuongdan = new UcHuongDan();
+                xtraHuongDan.Controls.Add(ucHuongdan);
+                xtraTabMain.TabPages.Add(xtraHuongDan);
+
+                xtraHuongDan.Text = "Hướng dẫn sử dụng";
+                ucHuongdan.Dock = DockStyle.Fill;
+            }
+            xtraTabMain.SelectedTabPage = xtraHuongDan;
+        }
+
+        private void FrmHome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1) btnHelp.PerformClick();
         }
     }
 }
