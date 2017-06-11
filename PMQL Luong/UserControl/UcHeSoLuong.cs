@@ -124,8 +124,8 @@ namespace PMQL_Luong.UserControl
                 grid_hesoluong.DataSource = dt;
                 grv_hesoluong.Columns["maheso"].Caption = "Mã hệ số";
                 grv_hesoluong.Columns["giatri"].Caption = "Hệ số";
-                grv_hesoluong.Columns["giatri"].Width = 50;
                 grv_hesoluong.Columns["mota"].Caption = "Mô tả";
+                grv_hesoluong.BestFitColumns();
             }
             catch { }
         }

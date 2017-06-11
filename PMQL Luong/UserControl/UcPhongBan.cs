@@ -87,6 +87,7 @@ namespace PMQL_Luong.UserControl
             grv_phongban.Columns["maphongban"].Caption = "Mã phòng ban";
             grv_phongban.Columns["tenphongban"].Caption = "Tên phòng ban";
             grv_phongban.Columns["diadiem"].Caption = "Địa điểm";
+            grv_phongban.BestFitColumns();
         }
 
         private void loadDiadiem()

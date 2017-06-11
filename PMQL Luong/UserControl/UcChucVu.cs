@@ -168,7 +168,7 @@ namespace PMQL_Luong.UserControl
                         command.Parameters.Add(new SqlParameter("@mota", txtMota.Text));
 
                         command.ExecuteNonQuery();
-                        XtraMessageBox.Show("Thêm mới phòng ban thành công", "Thông báo", MessageBoxButtons.OK);
+                        XtraMessageBox.Show("Thêm mới chức vụ thành công", "Thông báo", MessageBoxButtons.OK);
                         loadchucvu();
                     }
                     catch
@@ -204,7 +204,7 @@ namespace PMQL_Luong.UserControl
                     command.Parameters.Add(new SqlParameter("@mota", txtMota.Text));
 
                     command.ExecuteNonQuery();
-                    XtraMessageBox.Show("Sửa phòng ban thành công", "Thông báo", MessageBoxButtons.OK);
+                    XtraMessageBox.Show("Sửa thông tin chức vụ thành công", "Thông báo", MessageBoxButtons.OK);
                     loadchucvu();
                 }
                 catch
@@ -227,7 +227,7 @@ namespace PMQL_Luong.UserControl
                     command.Parameters.Add(new SqlParameter("@machucvu", ma));
 
                     command.ExecuteNonQuery();
-                    XtraMessageBox.Show("Đã xóa phòng ban", "Thông báo", MessageBoxButtons.OK);
+                    XtraMessageBox.Show("Đã xóa chức vụ", "Thông báo", MessageBoxButtons.OK);
                     loadchucvu();
                 }
                 catch

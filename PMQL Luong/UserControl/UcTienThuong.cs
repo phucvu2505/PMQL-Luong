@@ -154,14 +154,13 @@ namespace PMQL_Luong.UserControl
                 grid_nhanvien.DataSource = dt;
                 grv_nhanvien.Columns["machitiet"].Visible = false;
                 grv_nhanvien.Columns["tennhanvien"].Caption = "Nhân viên thưởng";
-                grv_nhanvien.Columns["tennhanvien"].BestFit();
                 grv_nhanvien.Columns["mota"].Caption = "Mô tả";
                 grv_nhanvien.Columns["giatri"].Caption = "Tiền thưởng";
                 grv_nhanvien.Columns["ngay"].Caption = "Ngày thưởng";
                 grv_nhanvien.Columns["ngay"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                 grv_nhanvien.Columns["ngay"].DisplayFormat.FormatString = "dd/MM/yyyy";
                 grv_nhanvien.Columns["nhanvienghi"].Caption = "Nhân viên ghi nhận";
-                grv_nhanvien.Columns["nhanvienghi"].BestFit();
+                grv_nhanvien.BestFitColumns();
             }
             catch { }
         }
