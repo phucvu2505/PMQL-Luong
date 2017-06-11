@@ -24,6 +24,7 @@ namespace PMQL_Luong.UserControl
         private int nam = 0;
         private int thang = 0;        
         private DataTable table;
+        private User user;
 
         public UcThongKeLuong(SqlConnection strConnect)
         {
@@ -367,7 +368,7 @@ namespace PMQL_Luong.UserControl
 
         private void btn_InBangLuong_Click(object sender, EventArgs e)
         {
-            //save.InitialDirectory = "C:";
+            save.InitialDirectory = "C:";
             save.Title = "Lưu ra file Excel";
             save.FileName = "";
             save.Filter = "Excel File(2013)|*.xlsx|Excel File(2007)|*.xls";
