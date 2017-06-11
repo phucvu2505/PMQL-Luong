@@ -327,6 +327,7 @@ namespace PMQL_Luong.UserControl
                     txt_matienthuong.Text = "";
                     txt_mota.Text = "";
                     txt_giatri.Text = "";
+                    loadComboBoxMucthuong();
                 }
                 catch
                 {
@@ -352,6 +353,7 @@ namespace PMQL_Luong.UserControl
                     txt_matienthuong.Text = "";
                     txt_mota.Text = "";
                     txt_giatri.Text = "";
+                    loadComboBoxMucthuong();
                 }
                 catch
                 {
@@ -451,6 +453,7 @@ namespace PMQL_Luong.UserControl
                     txt_giatri.Text = "";
                     btn_luu.Visible = false;
                     btn_huy.Visible = false;
+                    loadComboBoxMucthuong();
                 }
                 catch
                 {
@@ -489,15 +492,23 @@ namespace PMQL_Luong.UserControl
 
         private void txt_giatri_EditValueChanged(object sender, EventArgs e)
         {
-            if (!checkHeso())
+            if ("".Equals(txt_giatri.Text))
             {
                 errGiatri.Icon = Properties.Resources.ic_nook;
-                errGiatri.SetError(txt_giatri, "Hệ số không phù hợp");
+                errGiatri.SetError(txt_giatri, "");
             }
             else
             {
-                errGiatri.Icon = Properties.Resources.ic_ok;
-                errGiatri.SetError(txt_giatri, "Hệ số đúng");
+                if (!checkHeso())
+                {
+                    errGiatri.Icon = Properties.Resources.ic_nook;
+                    errGiatri.SetError(txt_giatri, "Hệ số không phù hợp");
+                }
+                else
+                {
+                    errGiatri.Icon = Properties.Resources.ic_ok;
+                    errGiatri.SetError(txt_giatri, "Hệ số đúng");
+                }
             }
         }
 
@@ -524,12 +535,12 @@ namespace PMQL_Luong.UserControl
                     txt_nvghinhan.Text = "";
                     btn_luu2.Visible = false;
                     btn_huy2.Visible = false;
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Thông tin nhập vào không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
+                catch
+            {
+                XtraMessageBox.Show("Thông tin nhập vào không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         }
 
         private void btn_huy2_Click(object sender, EventArgs e)

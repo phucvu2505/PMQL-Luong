@@ -114,9 +114,9 @@
             this.groupControl4.Controls.Add(this.xtraScrollableControl2);
             this.groupControl4.Controls.Add(this.panel2);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(2, 297);
+            this.groupControl4.Location = new System.Drawing.Point(2, 296);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(317, 82);
+            this.groupControl4.Size = new System.Drawing.Size(317, 83);
             this.groupControl4.TabIndex = 1;
             this.groupControl4.Text = "Thông tin nhân viên được thưởng";
             // 
@@ -167,6 +167,8 @@
             // 
             // cmp_tennv
             // 
+            this.cmp_tennv.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmp_tennv.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmp_tennv.FormattingEnabled = true;
             this.cmp_tennv.Location = new System.Drawing.Point(71, 54);
             this.cmp_tennv.Name = "cmp_tennv";
@@ -175,6 +177,8 @@
             // 
             // cmp_mucthuong
             // 
+            this.cmp_mucthuong.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmp_mucthuong.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmp_mucthuong.FormattingEnabled = true;
             this.cmp_mucthuong.Location = new System.Drawing.Point(71, 91);
             this.cmp_mucthuong.Name = "cmp_mucthuong";
@@ -274,7 +278,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(2, 20);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(317, 277);
+            this.groupControl3.Size = new System.Drawing.Size(317, 276);
             this.groupControl3.TabIndex = 0;
             this.groupControl3.Text = "Thông tin mức thưởng";
             // 
@@ -291,7 +295,7 @@
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(2, 84);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(313, 191);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(313, 190);
             this.xtraScrollableControl1.TabIndex = 1;
             // 
             // btn_huy

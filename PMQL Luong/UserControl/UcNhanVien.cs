@@ -212,7 +212,7 @@ namespace PMQL_Luong.UserControl
                 grv_DSnhanvien.Columns["ngayvaolam"].Caption = "Ngày vào làm";
                 grv_DSnhanvien.Columns["noio"].Caption = "Thường trú";
                 grv_DSnhanvien.Columns["SDT"].Caption = "Số điện thoại";
-                grv_DSnhanvien.Columns["trinhdo"].Caption = "Tình độ";
+                grv_DSnhanvien.Columns["trinhdo"].Caption = "Trình độ";
                 grv_DSnhanvien.Columns["tenphongban"].Caption = "Phòng ban";
                 grv_DSnhanvien.Columns["tenchucvu"].Caption = "Chức vụ";
                 grv_DSnhanvien.Columns["giatri"].Caption = "Hệ số lương";
