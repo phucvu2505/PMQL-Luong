@@ -40,8 +40,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.txt_tennv = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.btn_huy = new DevExpress.XtraEditors.SimpleButton();
             this.btn_luu = new DevExpress.XtraEditors.SimpleButton();
             this.cmp_diadiem = new System.Windows.Forms.ComboBox();
@@ -56,7 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_tennv.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_tenpb.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_mapb.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -146,8 +143,6 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.txt_tennv);
-            this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.btn_huy);
             this.groupControl1.Controls.Add(this.btn_luu);
             this.groupControl1.Controls.Add(this.cmp_diadiem);
@@ -163,28 +158,10 @@
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Thông tin phòng ban";
             // 
-            // txt_tennv
-            // 
-            this.txt_tennv.Location = new System.Drawing.Point(18, 255);
-            this.txt_tennv.MenuManager = this.barManager1;
-            this.txt_tennv.Name = "txt_tennv";
-            this.txt_tennv.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.txt_tennv.Properties.Appearance.Options.UseForeColor = true;
-            this.txt_tennv.Size = new System.Drawing.Size(200, 20);
-            this.txt_tennv.TabIndex = 9;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(18, 227);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(48, 13);
-            this.labelControl4.TabIndex = 8;
-            this.labelControl4.Text = "Nhân viên";
-            // 
             // btn_huy
             // 
             this.btn_huy.Image = ((System.Drawing.Image)(resources.GetObject("btn_huy.Image")));
-            this.btn_huy.Location = new System.Drawing.Point(119, 281);
+            this.btn_huy.Location = new System.Drawing.Point(119, 231);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(99, 48);
             this.btn_huy.TabIndex = 7;
@@ -194,7 +171,7 @@
             // btn_luu
             // 
             this.btn_luu.Image = ((System.Drawing.Image)(resources.GetObject("btn_luu.Image")));
-            this.btn_luu.Location = new System.Drawing.Point(18, 281);
+            this.btn_luu.Location = new System.Drawing.Point(18, 231);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(95, 48);
             this.btn_luu.TabIndex = 6;
@@ -298,7 +275,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_tennv.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_tenpb.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_mapb.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -333,7 +309,5 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit txt_tennv;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }
